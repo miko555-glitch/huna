@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هنا نذكر | Hena Nezkor — مكاننا للذكر معًا</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Supabase JS Client v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skyBlue: '#8DBCEB',
+                        deepBlue: '#315B8A',
+                        sageGreen: '#A8BFA0',
+                        forestGreen: '#355B45',
+                        cream: '#FFF8E9',
+                        creamDark: '#F3E7CE',
+                        warmYellow: '#F4D477',
+                        softPink: '#F0C7CF',
+                        ink: '#1E2D24'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                        ruqaa: ['Aref Ruqaa', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --sky-blue: #8DBCEB;
+            --deep-blue: #315B8A;
+            --sage-green: #A8BFA0;
+            --forest-green: #355B45;
+            --cream: #FFF8E9;
+            --warm-yellow: #F4D477;
+            --soft-pink: #F0C7CF;
+            --ink: #1E2D24;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--ink);
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(rgba(49, 91, 138, 0.09) 1.25px, transparent 1.25px),
+                radial-gradient(rgba(53, 91, 69, 0.06) 1.25px, #FFF8E9 1.25px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+
+        /* Subtle Tactile Paper Grain Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.14;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+        }
+
+        .font-editorial {
+            font-family: 'Aref Ruqaa', 'Amiri', serif;
+            line-height: 1.45;
+        }
+
+        .font-journal {
+            font-family: 'Amiri', serif;
+        }
+
+        /* Artistic Brush Highlights */
+        .marker-yellow {
+            background: linear-gradient(104deg, rgba(244, 212, 119, 0) 0.9%, rgba(244, 212, 119, 0.85) 2.4%, rgba(244, 212, 119, 0.65) 5.8%, rgba(244, 212, 119, 0.8) 93%, rgba(244, 212, 119, 0.3) 96%, rgba(244, 212, 119, 0) 98%);
+            padding: 0.05em 0.35em;
+            border-radius: 0.35em;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .marker-pink {
+            background: linear-gradient(104deg, rgba(240, 199, 207, 0) 0.9%, rgba(240, 199, 207, 0.85) 2.4%, rgba(240, 199, 207, 0.65) 5.8%, rgba(240, 199, 207, 0.8) 93%, rgba(240, 199, 207, 0) 98%);
+            padding: 0.05em 0.35em;
+            border-radius: 0.35em;
+        }
+
+        /* Creative Offset Collage Cards */
+        .paper-card {
+            background-color: #FFFDF9;
+            border: 2px solid #315B8A;
+            box-shadow: 6px 6px 0px #315B8A;
+            position: relative;
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+        }
+        .paper-card:hover {
+            transform: translate(-2px, -3px);
+            box-shadow: 9px 9px 0px #315B8A;
+        }
+
+        .paper-card-green {
+            background-color: #FFFDF9;
+            border: 2px solid #355B45;
+            box-shadow: 6px 6px 0px #355B45;
+            position: relative;
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+        }
+        .paper-card-green:hover {
+            transform: translate(-2px, -3px);
+            box-shadow: 9px 9px 0px #355B45;
+        }
+
+        .paper-static {
+            background-color: #FFFDF9;
+            border: 2px solid #315B8A;
+            box-shadow: 7px 7px 0px #315B8A;
+            position: relative;
+        }
+
+        /* Pinterest-Inspired Celestial Arched Window Cards */
+        .arch-card {
+            background-color: #FFFDF9;
+            border: 2.5px solid #315B8A;
+            border-radius: 170px 170px 32px 32px;
+            box-shadow: 8px 8px 0px #315B8A;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .arch-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 11px 11px 0px #315B8A;
+        }
+
+        .arch-card-green {
+            background-color: #FFFDF9;
+            border: 2.5px solid #355B45;
+            border-radius: 170px 170px 32px 32px;
+            box-shadow: 8px 8px 0px #355B45;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .arch-card-green:hover {
+            transform: translateY(-4px);
+            box-shadow: 11px 11px 0px #355B45;
+        }
+
+        /* Hardcover Bound Journal Cover Card (for Rooms Bookshelf) */
+        .journal-cover-card {
+            background-color: #FFFDF9;
+            border: 2.5px solid #315B8A;
+            border-right: 16px solid #315B8A;
+            border-radius: 20px 8px 8px 20px;
+            box-shadow: 7px 7px 0px rgba(49, 91, 138, 0.25);
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .journal-cover-card:hover {
+            transform: translateY(-5px) rotate(-0.6deg);
+            box-shadow: 11px 11px 0px rgba(49, 91, 138, 0.35);
+        }
+
+        .journal-cover-green {
+            border-color: #355B45;
+            border-right-color: #355B45;
+            box-shadow: 7px 7px 0px rgba(53, 91, 69, 0.25);
+        }
+
+        /* Hanging Bookmark Ribbon */
+        .bookmark-ribbon {
+            width: 34px;
+            height: 54px;
+            background: #F0C7CF;
+            border: 2px solid #315B8A;
+            border-top: none;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+        }
+
+        /* Embossed Wax Seal Badge */
+        .wax-seal {
+            border-radius: 9999px;
+            border: 2px solid #315B8A;
+            box-shadow: 3px 3px 0px #315B8A;
+            position: relative;
+        }
+        .wax-seal::after {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            border-radius: 9999px;
+            border: 1.5px dashed rgba(49, 91, 138, 0.5);
+            pointer-events: none;
+        }
+
+        /* Pinned Scrapbook Note */
+        .pinned-note {
+            background-color: #FFFDF9;
+            border: 2px solid #315B8A;
+            box-shadow: 4px 4px 0px rgba(49, 91, 138, 0.2);
+            position: relative;
+            transition: transform 0.25s ease;
+        }
+        .pinned-note:hover {
+            transform: scale(1.02) rotate(0deg) !important;
+            z-index: 10;
+        }
+        .pin-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 9999px;
+            background: #F0C7CF;
+            border: 2px solid #315B8A;
+            box-shadow: 1px 2px 0px #315B8A;
+        }
+
+        /* Lined Journal Paper */
+        .notebook-paper {
+            background-color: #FFFDF9;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 31px,
+                rgba(141, 188, 235, 0.28) 31px,
+                rgba(141, 188, 235, 0.28) 32px
+            );
+        }
+
+        /* Selective Washi Tape for Auth & Modals */
+        .washi-tape {
+            position: absolute;
+            width: 96px;
+            height: 24px;
+            opacity: 0.85;
+            z-index: 10;
+            border: 1.5px dashed rgba(49, 91, 138, 0.35);
+        }
+        .washi-yellow { background-color: rgba(244, 212, 119, 0.8); transform: rotate(-3deg); }
+        .washi-pink { background-color: rgba(240, 199, 207, 0.8); transform: rotate(3deg); }
+        .washi-blue { background-color: rgba(141, 188, 235, 0.8); transform: rotate(-2deg); }
+        .washi-sage { background-color: rgba(168, 191, 160, 0.8); transform: rotate(2deg); }
+
+        /* Perforated Ticket Stub */
+        .ticket-stub {
+            background: #F4D477;
+            border: 2px solid #315B8A;
+            box-shadow: 3px 3px 0px #315B8A;
+            padding: 4px 16px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        /* Tactile Offset Buttons */
+        .btn-scrapbook {
+            border: 2px solid #1E2D24;
+            box-shadow: 4px 4px 0px #1E2D24;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-scrapbook:hover:not(:disabled) {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #1E2D24;
+        }
+        .btn-scrapbook:active:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #1E2D24;
+        }
+        .btn-scrapbook:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            box-shadow: 2px 2px 0px #1E2D24;
+        }
+
+        /* =====================================================
+           CREATIVE DIE-CUT STICKERS & TASSELED BOOKMARK RIBBONS
+           ===================================================== */
+        .die-cut-sticker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFFDF9;
+            border: 3px solid #FFFDF9;
+            outline: 2px solid #315B8A;
+            box-shadow: 4px 5px 0px #315B8A;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+        }
+        .die-cut-sticker:hover {
+            transform: scale(1.16) rotate(-8deg) translateY(-4px);
+            box-shadow: 6px 8px 0px #315B8A;
+        }
+
+        /* Embroidered Hanging Bookmark Ribbon with Swinging Charm */
+        .bookmark-ribbon {
+            width: 38px;
+            height: 68px;
+            background: linear-gradient(180deg, #F0C7CF 0%, #F4D477 100%);
+            border: 2px solid #315B8A;
+            border-top: none;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+            transform-origin: top center;
+            animation: pendulumSwing 4.2s ease-in-out infinite;
+            box-shadow: 3px 4px 0px rgba(49, 91, 138, 0.25);
+        }
+        .bookmark-ribbon::before {
+            content: "✦";
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #315B8A;
+            font-weight: 900;
+        }
+        .bookmark-ribbon::after {
+            content: "";
+            position: absolute;
+            inset: 3px 4px 14px 4px;
+            border-left: 1.5px dashed rgba(49, 91, 138, 0.45);
+            border-right: 1.5px dashed rgba(49, 91, 138, 0.45);
+        }
+
+        /* Creative Washi Marquee Ribbon */
+        .creative-ribbon-bar {
+            background: repeating-linear-gradient(
+                -45deg,
+                #F4D477,
+                #F4D477 18px,
+                #FFF8E9 18px,
+                #FFF8E9 36px
+            );
+            border-top: 2.5px solid #315B8A;
+            border-bottom: 2.5px solid #315B8A;
+            box-shadow: 0 5px 0px rgba(49, 91, 138, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Animated Liquid Shimmer Progress Bar */
+        .progress-shimmer {
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.22) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.22) 50%,
+                rgba(255, 255, 255, 0.22) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 24px 24px;
+            animation: progressStripe 1.2s linear infinite;
+        }
+
+        /* Rich Keyframe Animations */
+        @keyframes floatButterfly {
+            0%, 100% { transform: translateY(0px) rotate(-5deg) scale(1); }
+            25% { transform: translateY(-9px) rotate(4deg) scale(1.06, 0.96); }
+            50% { transform: translateY(-16px) rotate(8deg) scale(1.08); }
+            75% { transform: translateY(-6px) rotate(-2deg) scale(0.97, 1.04); }
+        }
+        @keyframes twinkleStar {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+            50% { transform: scale(1.26) rotate(22deg); opacity: 1; }
+        }
+        @keyframes swaySlow {
+            0%, 100% { transform: rotate(-5deg) translateY(0px); }
+            50% { transform: rotate(5deg) translateY(-6px); }
+        }
+        @keyframes pendulumSwing {
+            0%, 100% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+        }
+        @keyframes spinSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes stickerFloat {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-7px) rotate(3deg); }
+        }
+        @keyframes stickerPop {
+            0% { transform: scale(0.75) rotate(-10deg); opacity: 0; }
+            70% { transform: scale(1.06) rotate(2deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+        @keyframes progressStripe {
+            0% { background-position: 24px 0; }
+            100% { background-position: 0 0; }
+        }
+        @keyframes floatUpFade {
+            0% { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-65px) scale(1.25) rotate(-12deg); opacity: 0.95; }
+            100% { transform: translateY(-135px) scale(1.4) rotate(18deg); opacity: 0; }
+        }
+        @keyframes pulseHalo {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 212, 119, 0.7), 4px 4px 0px #315B8A; }
+            50% { box-shadow: 0 0 0 10px rgba(244, 212, 119, 0), 4px 4px 0px #315B8A; }
+        }
+
+        .anim-butterfly { animation: floatButterfly 4.2s ease-in-out infinite; }
+        .anim-star { animation: twinkleStar 3.2s ease-in-out infinite; }
+        .anim-sway { animation: swaySlow 5.2s ease-in-out infinite; }
+        .anim-spin-slow { animation: spinSlow 22s linear infinite; }
+        .anim-sticker-float { animation: stickerFloat 3.4s ease-in-out infinite; }
+        .anim-sticker-float-delay { animation: stickerFloat 3.8s ease-in-out 1.2s infinite; }
+        .anim-pendulum { transform-origin: top center; animation: pendulumSwing 3.6s ease-in-out infinite; }
+        .anim-halo { animation: pulseHalo 2.6s infinite; }
+        .view-section:not(.hidden) { animation: stickerPop 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+        .celebration-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: floatUpFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Floating Scrapbook Dock at Bottom */
+        .scrapbook-dock-item {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .scrapbook-dock-item:hover {
+            transform: translateY(-8px) scale(1.08) rotate(-3deg);
+        }
+        .scrapbook-dock-item.active-dock {
+            transform: translateY(-6px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .anim-butterfly, .anim-star, .anim-sway, .anim-spin-slow, .anim-sticker-float, .anim-sticker-float-delay, .anim-pendulum, .marquee-track, .bookmark-ribbon {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pb-28 md:pb-0 selection:bg-warmYellow selection:text-ink">
+
+    <!-- =====================================================
+         ARTISTIC CELESTIAL & BOTANICAL BACKGROUND COLLAGE
+         ===================================================== -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+        <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-warmYellow/20 blur-3xl"></div>
+        <div class="absolute top-1/2 -left-32 w-96 h-96 rounded-full bg-skyBlue/20 blur-3xl"></div>
+        <div class="absolute -bottom-32 right-1/3 w-96 h-96 rounded-full bg-sageGreen/20 blur-3xl"></div>
+
+        <!-- Rotating Hand-Drawn Radiant Sun (Top Right) -->
+        <svg class="hidden xl:block absolute top-24 right-10 w-24 h-24 opacity-75 anim-spin-slow" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="22" fill="#F4D477" stroke="#315B8A" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="16" stroke="#315B8A" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M50 8V20M50 80V92M8 50H20M80 50H92M20 20L29 29M71 71L80 80M80 20L71 29M29 71L20 80" stroke="#315B8A" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Illustrated Fluttering Butterfly (Top Left) -->
+        <svg class="hidden lg:block absolute top-32 left-12 w-16 h-16 opacity-85 anim-butterfly" viewBox="0 0 80 80" fill="none">
+            <path d="M40 42C24 14 4 18 9 40C12 55 30 50 40 42Z" fill="#F0C7CF" stroke="#315B8A" stroke-width="2.2"/>
+            <path d="M40 42C56 14 76 18 71 40C68 55 50 50 40 42Z" fill="#8DBCEB" stroke="#315B8A" stroke-width="2.2"/>
+            <path d="M40 42C28 50 16 68 27 72C36 75 40 58 40 42Z" fill="#F4D477" stroke="#315B8A" stroke-width="2.2"/>
+            <path d="M40 42C52 50 64 68 53 72C44 75 40 58 40 42Z" fill="#A8BFA0" stroke="#315B8A" stroke-width="2.2"/>
+            <path d="M40 24V62" stroke="#1E2D24" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Floating Botanical Olive Branch (Middle Right) -->
+        <svg class="hidden lg:block absolute top-2/3 right-8 w-16 h-16 opacity-70 anim-sway" viewBox="0 0 80 80" fill="none">
+            <path d="M15 65C30 45 50 30 68 15" stroke="#355B45" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M32 46C24 38 26 26 36 30C40 34 36 42 32 46Z" fill="#A8BFA0" stroke="#355B45" stroke-width="2"/>
+            <path d="M48 32C40 24 42 12 52 16C56 20 52 28 48 32Z" fill="#A8BFA0" stroke="#355B45" stroke-width="2"/>
+            <path d="M38 48C48 54 58 48 52 38C46 36 42 42 38 48Z" fill="#F4D477" stroke="#355B45" stroke-width="2"/>
+        </svg>
+
+        <!-- Twinkling Sparkle Stars -->
+        <svg class="hidden md:block absolute bottom-28 left-16 w-11 h-11 opacity-75 anim-star" viewBox="0 0 50 50" fill="none">
+            <path d="M25 3L30 19L47 25L30 31L25 47L20 31L3 25L20 19L25 3Z" fill="#F4D477" stroke="#315B8A" stroke-width="2"/>
+        </svg>
+        <svg class="hidden md:block absolute top-1/3 right-1/4 w-7 h-7 opacity-60 anim-star" style="animation-delay: 1.4s" viewBox="0 0 50 50" fill="none">
+            <path d="M25 3L30 19L47 25L30 31L25 47L20 31L3 25L20 19L25 3Z" fill="#F0C7CF" stroke="#315B8A" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <!-- =====================================================
+         CREATIVE WASHI-TAPE ANIMATED TOP RIBBON (الشريطة العلوية المتحركة)
+         ===================================================== -->
+    <div class="creative-ribbon-bar py-1.5 z-40 select-none">
+        <div class="marquee-track flex items-center gap-8 text-xs font-extrabold text-deepBlue">
+            <span class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#FFFDF9] border border-deepBlue shadow-[2px_2px_0px_#315B8A]">
+                <svg class="w-3.5 h-3.5 text-forestGreen" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+                ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
+            </span>
+            <span>☀️ أذكار الصباح نورٌ وبداية</span>
+            <span>✦</span>
+            <span>🌙 أذكار المساء سكينةٌ وحفظ</span>
+            <span>✦</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-softPink/90 border border-deepBlue">
+                🦋 مكان صغير يجمعنا على الذكر مهما كانت المسافات
+            </span>
+            <span>✦</span>
+            <span>🌿 صحبةٌ صالحة بلا تنافس ولا رياء</span>
+            <span>✦</span>
+            <span class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#FFFDF9] border border-deepBlue shadow-[2px_2px_0px_#315B8A]">
+                <svg class="w-3.5 h-3.5 text-forestGreen" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+                ﴿ فَاذْكُرُونِي أَذْكُرْكُمْ ﴾
+            </span>
+            <span>☀️ أذكار الصباح نورٌ وبداية</span>
+            <span>✦</span>
+            <span>🌙 أذكار المساء سكينةٌ وحفظ</span>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         FLOATING STUDIO PILL NAVIGATION BAR WITH WASHI ACCENTS
+         ===================================================== -->
+    <header class="sticky top-3 z-40 px-3 sm:px-6 mt-2">
+        <div class="max-w-5xl mx-auto bg-[#FFFDF9]/95 backdrop-blur-md border-2 border-deepBlue rounded-full px-4 sm:px-6 py-2.5 shadow-[6px_6px_0px_#315B8A] flex items-center justify-between gap-3 relative">
+            <!-- Decorative Mini Washi Strip on Header Corner -->
+            <span class="hidden sm:block absolute -top-2.5 right-14 w-16 h-4 bg-warmYellow/85 border border-dashed border-deepBlue -rotate-3 pointer-events-none"></span>
+
+            <!-- Brand Identity with Die-Cut Animated Sticker Emblem -->
+            <button onclick="app.navigate('landing')" class="flex items-center gap-3 text-right group focus:outline-none">
+                <div class="die-cut-sticker w-11 h-11 rounded-2xl bg-warmYellow group-hover:rotate-12">
+                    <!-- Custom Illustrated Botanical Crescent & Leaf SVG -->
+                    <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none">
+                        <path d="M26 9C18 11 14 19 17 27C19 32 25 35 30 34C23 37 14 33 11 25C8 17 12 8 20 6C22 5.5 24 7 26 9Z" fill="#315B8A"/>
+                        <path d="M22 24C25 18 31 15 35 16C34 21 30 25 22 24Z" fill="#355B45" stroke="#1E2D24" stroke-width="1.5"/>
+                        <circle cx="27" cy="11" r="2.5" fill="#F0C7CF" stroke="#315B8A" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-editorial text-2xl sm:text-3xl font-bold text-deepBlue block leading-none">هنا نذكر</span>
+                    <span class="text-[10px] font-extrabold tracking-widest text-forestGreen uppercase">HENA NEZKOR JOURNAL</span>
+                </div>
+            </button>
+
+            <!-- Desktop Navigation Ribbon Tabs -->
+            <nav id="desktop-nav" class="hidden md:flex items-center gap-1.5 bg-cream px-2.5 py-1.5 rounded-full border-2 border-deepBlue/25 shadow-inner">
+                <button onclick="app.navigate('landing')" data-nav="landing" class="nav-btn px-4 py-1.5 rounded-full font-extrabold text-xs text-ink/80 hover:text-deepBlue transition-all flex items-center gap-1.5">
+                    <span>✦</span><span>الرئيسية</span>
+                </button>
+                <button onclick="app.navigate('dashboard')" data-nav="dashboard" class="nav-btn px-4 py-1.5 rounded-full font-extrabold text-xs text-ink/80 hover:text-deepBlue transition-all flex items-center gap-1.5">
+                    <span>📚</span><span>مجالسي</span>
+                </button>
+                <button onclick="app.navigate('history')" data-nav="history" class="nav-btn px-4 py-1.5 rounded-full font-extrabold text-xs text-ink/80 hover:text-deepBlue transition-all flex items-center gap-1.5">
+                    <span>🗓️</span><span>السجل</span>
+                </button>
+                <button onclick="app.navigate('profile')" data-nav="profile" class="nav-btn px-4 py-1.5 rounded-full font-extrabold text-xs text-ink/80 hover:text-deepBlue transition-all flex items-center gap-1.5">
+                    <span>🌿</span><span>ذكري اليومي</span>
+                </button>
+                <button onclick="app.navigate('about')" data-nav="about" class="nav-btn px-4 py-1.5 rounded-full font-extrabold text-xs text-ink/80 hover:text-deepBlue transition-all">قصتنا</button>
+            </nav>
+
+            <!-- Auth Controls -->
+            <div class="flex items-center gap-2">
+                <span id="db-status-dot" class="hidden"></span>
+                <span id="db-status-label" class="hidden"></span>
+
+                <!-- Guest Auth Buttons -->
+                <div id="nav-guest-btns" class="flex items-center gap-2">
+                    <button onclick="app.navigate('login')" class="px-3.5 py-1.5 rounded-full font-extrabold text-xs text-deepBlue hover:bg-skyBlue/25 transition-colors">
+                        تسجيل الدخول
+                    </button>
+                    <button onclick="app.navigate('register')" class="btn-scrapbook px-4 py-1.5 rounded-full font-extrabold text-xs bg-warmYellow text-ink">
+                        إنشاء حساب ✦
+                    </button>
+                </div>
+
+                <!-- Logged-in User Controls -->
+                <div id="nav-user-btns" class="hidden items-center gap-2">
+                    <button onclick="app.navigate('profile')" class="px-3.5 py-1.5 rounded-full bg-sageGreen/40 border-2 border-forestGreen font-extrabold text-xs text-forestGreen flex items-center gap-1.5 hover:bg-sageGreen/60 transition-colors shadow-[2px_2px_0px_#355B45]">
+                        <span class="inline-block w-2 h-2 rounded-full bg-forestGreen animate-ping"></span>
+                        <span id="nav-user-name" class="max-w-[110px] truncate"></span>
+                    </button>
+                    <button onclick="app.handleLogout()" class="px-3 py-1.5 rounded-full bg-softPink/70 border-2 border-ink font-extrabold text-[11px] text-ink hover:bg-softPink transition-colors">
+                        خروج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+         TOAST NOTIFICATION BANNER
+         ===================================================== -->
+    <div id="toast-container" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 w-[92%] max-w-md pointer-events-none"></div>
+
+    <!-- =====================================================
+         MAIN CONTENT CONTAINER
+         ===================================================== -->
+    <main class="flex-grow relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 md:py-12">
+
+        <!-- =================================================
+             1. LANDING PAGE VIEW (CREATIVE EDITORIAL COLLAGE)
+             ================================================= -->
+        <section id="view-landing" class="view-section space-y-24">
+            <!-- Hero Collage Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-2">
+                <!-- Right Column: Magazine Editorial Typography & Hand-drawn Annotations -->
+                <div class="lg:col-span-7 space-y-7 text-right relative">
+                    <!-- Stamp Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-softPink/70 border-2 border-deepBlue shadow-[3px_3px_0px_#315B8A] -rotate-1">
+                        <span class="text-sm">🦋</span>
+                        <span class="font-extrabold text-xs text-deepBlue tracking-wide">دفتر الذكر المشترك • عدد اليوم</span>
+                    </div>
+
+                    <!-- Oversized Expressive Headline -->
+                    <div class="space-y-3">
+                        <h1 class="font-editorial text-4xl sm:text-6xl font-bold text-deepBlue leading-[1.35]">
+                            مش لازم نكون في نفس المكان...
+                            <span class="block text-forestGreen mt-2 relative">
+                                <span class="marker-yellow">عشان نذكر مع بعض.</span>
+                            </span>
+                        </h1>
+                        <!-- Hand-drawn SVG Decorative Underline -->
+                        <svg class="w-56 h-5 text-deepBlue mr-1" viewBox="0 0 240 20" fill="none">
+                            <path d="M4 14C65 4 150 4 236 12" stroke="#315B8A" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M35 17C95 10 165 11 210 16" stroke="#F4D477" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <p class="text-lg sm:text-xl text-ink/85 font-semibold leading-relaxed max-w-xl">
+                        "أنشئ مجلسك، اجمع الناس اللي بتحبهم، وخلي أذكار الصباح والمساء عادة تجمعكم كل يوم في دفتر واحد دافئ."
+                    </p>
+
+                    <!-- Creative Action Cluster + Hand-drawn Arrow Note -->
+                    <div class="pt-2 space-y-5">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <button onclick="app.handleHeroStartRoom()" class="btn-scrapbook px-8 py-4 rounded-2xl bg-forestGreen text-cream font-extrabold text-base flex items-center gap-2">
+                                <span>ابدأ مجلسك 🤍</span>
+                            </button>
+                            <button onclick="app.handleHeroJoinRoom()" class="btn-scrapbook px-7 py-4 rounded-2xl bg-warmYellow text-ink font-extrabold text-base flex items-center gap-2">
+                                <span>انضم إلى مجلس 🔑</span>
+                            </button>
+                        </div>
+
+                        <!-- Handwritten Ruqaa Margin Annotation with Curved Arrow -->
+                        <div class="flex items-center gap-3 pt-1">
+                            <svg class="w-10 h-10 text-deepBlue shrink-0 -scale-x-100" viewBox="0 0 50 50" fill="none">
+                                <path d="M8 38C18 38 32 28 36 12M36 12L26 16M36 12L42 22" stroke="#315B8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <button onclick="app.quickDemoLogin()" class="text-right group">
+                                <span class="font-editorial text-xl text-deepBlue group-hover:text-forestGreen transition-colors block">
+                                    ✨ جرّب تفتح "دفتر مجلس العائلة" الجاهز بضغطة واحدة
+                                </span>
+                                <span class="text-xs font-bold text-ink/60 underline">اضغط هنا للدخول التجريبي السريع ←</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left Column: Arched Celestial Portal & Open Scrapbook Journal -->
+                <div class="lg:col-span-5 relative">
+                    <!-- Floating Wax Seal Sticker (Top Left) -->
+                    <div class="wax-seal w-16 h-16 bg-warmYellow flex flex-col items-center justify-center text-center -rotate-12 absolute -top-5 -left-3 z-20">
+                        <span class="text-base leading-none">🤍</span>
+                        <span class="font-editorial text-[11px] font-bold text-deepBlue leading-tight">معًا<br>نذكر</span>
+                    </div>
+
+                    <!-- Arched Illustrated Journal Card -->
+                    <div class="arch-card p-6 sm:p-8 pt-12 bg-[#FFFDF9] space-y-5 relative overflow-hidden">
+                        <!-- Hanging Bookmark Ribbon at Top Center -->
+                        <div class="bookmark-ribbon absolute top-0 left-1/2 -translate-x-1/2"></div>
+
+                        <!-- Celestial Illustration Header Inside Arch -->
+                        <div class="text-center space-y-2 pt-4">
+                            <div class="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-skyBlue/30 border border-deepBlue text-xs font-extrabold text-deepBlue">
+                                <span>☀️ صباحاً</span>
+                                <span>•</span>
+                                <span>🌙 مساءً</span>
+                            </div>
+                            <h3 class="font-editorial text-3xl font-bold text-deepBlue">مجلس العائلة</h3>
+                            <div class="flex items-center justify-center gap-2">
+                                <span dir="ltr" class="ticket-stub font-mono text-xs font-black text-ink">HN-4827</span>
+                                <span class="px-3 py-1 rounded-full bg-sageGreen/40 border border-forestGreen text-xs font-extrabold text-forestGreen">8 أعضاء</span>
+                            </div>
+                        </div>
+
+                        <!-- Lined Journal Sheet Preview -->
+                        <div class="notebook-paper rounded-2xl p-4 border-2 border-deepBlue/30 space-y-3">
+                            <!-- Morning Stamp Row -->
+                            <div class="p-3 rounded-xl bg-warmYellow/40 border-2 border-deepBlue flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">☀️</span>
+                                    <div>
+                                        <p class="font-extrabold text-xs text-deepBlue">أذكار الصباح</p>
+                                        <p class="text-[11px] font-bold text-forestGreen">6 من 8 أعضاء أتمّوها</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-forestGreen text-cream font-extrabold text-xs">75% ✓</span>
+                            </div>
+
+                            <!-- Evening Stamp Row -->
+                            <div class="p-3 rounded-xl bg-skyBlue/30 border-2 border-deepBlue flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-xl">🌙</span>
+                                    <div>
+                                        <p class="font-extrabold text-xs text-deepBlue">أذكار المساء</p>
+                                        <p class="text-[11px] font-bold text-deepBlue">5 من 8 أعضاء أتمّوها</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-lg bg-deepBlue text-cream font-extrabold text-xs">62% ✓</span>
+                            </div>
+                        </div>
+
+                        <!-- Pinned Sticky Notes Preview -->
+                        <div class="grid grid-cols-2 gap-3 pt-1">
+                            <div class="pinned-note rounded-xl p-3 bg-softPink/35 -rotate-2">
+                                <div class="pin-dot mx-auto -mt-5 mb-1.5"></div>
+                                <p class="font-extrabold text-xs text-deepBlue">🌅 أحمد</p>
+                                <p class="text-[11px] font-bold text-ink/80">قرأ أذكار الصباح</p>
+                                <span class="text-[10px] font-bold text-forestGreen block mt-1">اليوم • 07:42 ص</span>
+                            </div>
+                            <div class="pinned-note rounded-xl p-3 bg-sageGreen/30 rotate-2">
+                                <div class="pin-dot mx-auto -mt-5 mb-1.5"></div>
+                                <p class="font-extrabold text-xs text-deepBlue">🌙 مريم</p>
+                                <p class="text-[11px] font-bold text-ink/80">قرأت أذكار المساء</p>
+                                <span class="text-[10px] font-bold text-deepBlue block mt-1">اليوم • 06:31 م</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creative Staggered Collage Story ("كيف نذكر معًا؟") -->
+            <div class="space-y-12">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <span class="px-3.5 py-1 rounded-full bg-warmYellow border-2 border-deepBlue font-extrabold text-xs text-ink shadow-[2px_2px_0px_#315B8A]">فلسفة الدفتر المشترك</span>
+                    <h2 class="font-editorial text-4xl font-bold text-deepBlue pt-1">ثلاث خطوات في دفترٍ واحد</h2>
+                    <p class="text-sm text-ink/75 font-semibold">تصميم هادئ يجمع القلوب دون عدّادات معقّدة أو لوحات تنافسية</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <!-- Piece 1: Arched Window Card with Die-Cut SVG Sticker -->
+                    <div class="arch-card p-7 pt-10 bg-warmYellow/25 flex flex-col justify-between space-y-4 -rotate-1 group">
+                        <div class="space-y-3 text-center">
+                            <div class="die-cut-sticker w-16 h-16 mx-auto rounded-2xl bg-warmYellow anim-sticker-float">
+                                <!-- Custom Illustrated Lantern Sanctuary SVG -->
+                                <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                                    <path d="M24 6V11M18 11H30L33 17H15L18 11Z" stroke="#315B8A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="#F0C7CF"/>
+                                    <rect x="15" y="17" width="18" height="19" rx="4" fill="#FFFDF9" stroke="#315B8A" stroke-width="2.2"/>
+                                    <circle cx="24" cy="26.5" r="4.5" fill="#F4D477" stroke="#315B8A" stroke-width="2"/>
+                                    <path d="M13 36H35M17 40H31" stroke="#315B8A" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span class="font-mono text-xs font-black text-deepBlue/70 block">STEP 01</span>
+                            <h3 class="font-editorial text-3xl font-bold text-deepBlue">افتح دفتراً لمجلسك</h3>
+                            <p class="text-sm text-ink/80 font-medium leading-relaxed">
+                                أنشئ مجلساً خاصاً لعائلتك أو أصدقائك، وشاركهم تذكرة الرمز وكلمة المرور لمرة واحدة فقط عند الانضمام.
+                            </p>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-[#FFFDF9] border-2 border-deepBlue text-[11px] font-extrabold text-deepBlue shadow-[2px_2px_0px_#315B8A]">خصوصية تامة 🔒</span>
+                        </div>
+                    </div>
+
+                    <!-- Piece 2: Arched Green Botanical Card with Die-Cut Sun SVG Sticker -->
+                    <div class="arch-card-green p-7 pt-10 bg-sageGreen/25 flex flex-col justify-between space-y-4 md:-translate-y-4 group">
+                        <div class="space-y-3 text-center">
+                            <div class="die-cut-sticker w-16 h-16 mx-auto rounded-2xl bg-sageGreen/60 anim-sticker-float-delay">
+                                <!-- Custom Illustrated Sun & Open Book SVG -->
+                                <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                                    <circle cx="24" cy="18" r="7" fill="#F4D477" stroke="#355B45" stroke-width="2.2"/>
+                                    <path d="M24 7V9M24 27V29M13 18H15M33 18H35M16 10L18 12M30 24L32 26M32 10L30 12M18 24L16 26" stroke="#355B45" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M10 36C15 33 21 34 24 37C27 34 33 33 38 36V27C33 24 27 25 24 28C21 25 15 24 10 27V36Z" fill="#FFFDF9" stroke="#355B45" stroke-width="2.2" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="font-mono text-xs font-black text-forestGreen/80 block">STEP 02</span>
+                            <h3 class="font-editorial text-3xl font-bold text-forestGreen">اقرأ وسجّل بضغطة</h3>
+                            <p class="text-sm text-ink/80 font-medium leading-relaxed">
+                                اقرأ أذكار الصباح أو المساء بخشوع من المطوية المدمجة، ثم اضغط زر الإتمام مرة واحدة ليُختم ذكرك اليومي.
+                            </p>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-[#FFFDF9] border-2 border-forestGreen text-[11px] font-extrabold text-forestGreen shadow-[2px_2px_0px_#355B45]">بلا عدّادات مرهقة 🌿</span>
+                        </div>
+                    </div>
+
+                    <!-- Piece 3: Arched Sky Card with Die-Cut Heart-Butterfly SVG Sticker -->
+                    <div class="arch-card p-7 pt-10 bg-skyBlue/25 flex flex-col justify-between space-y-4 rotate-1 group">
+                        <div class="space-y-3 text-center">
+                            <div class="die-cut-sticker w-16 h-16 mx-auto rounded-2xl bg-softPink/80 anim-sticker-float">
+                                <!-- Custom Illustrated Heart & Stars SVG -->
+                                <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                                    <path d="M24 38C24 38 10 29 10 18.5C10 13.5 14 10 18.5 10C21.3 10 23.8 11.5 24 14C24.2 11.5 26.7 10 29.5 10C34 10 38 13.5 38 18.5C38 29 24 38 24 38Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="2.3" stroke-linejoin="round"/>
+                                    <path d="M24 18L25.5 22L29.5 23.5L25.5 25L24 29L22.5 25L18.5 23.5L22.5 22L24 18Z" fill="#F4D477" stroke="#315B8A" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <span class="font-mono text-xs font-black text-deepBlue/70 block">STEP 03</span>
+                            <h3 class="font-editorial text-3xl font-bold text-deepBlue">أثرٌ يجمع القلوب</h3>
+                            <p class="text-sm text-ink/80 font-medium leading-relaxed">
+                                شاهد قصاصات الأعضاء في لوحة الأثر الحي، وتصفّح أرشيف الأيام السابقة كدفتر ذكريات إيماني مشترك.
+                            </p>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-[#FFFDF9] border-2 border-deepBlue text-[11px] font-extrabold text-deepBlue shadow-[2px_2px_0px_#315B8A]">تشجيع بلا تنافس 🤍</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             2. ABOUT VIEW (عن هنا نذكر)
+             ================================================= -->
+        <section id="view-about" class="view-section hidden space-y-8">
+            <div class="paper-card rounded-3xl p-8 md:p-12 notebook-paper max-w-4xl mx-auto space-y-6">
+                <div class="washi-tape washi-yellow -top-3 right-1/3"></div>
+                <span class="px-4 py-1 rounded-full bg-sageGreen/50 border-2 border-forestGreen text-forestGreen font-bold text-xs">قصتنا وفلسفتنا</span>
+                <h2 class="font-editorial text-4xl md:text-5xl font-bold text-deepBlue">عن هنا نذكر | Hena Nezkor</h2>
+                <p class="text-lg leading-relaxed text-ink/90">
+                    في زحام الحياة وتباعد المسافات بين أفراد الأسرة والأصدقاء، وُلدت فكرة <strong>"هنا نذكر"</strong> لتكون دفتراً مشتركاً دافئاً يجمع القلوب على ذكر الله في الصباح والمساء.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div class="p-5 rounded-2xl bg-warmYellow/25 border-2 border-deepBlue">
+                        <h3 class="font-bold text-lg text-deepBlue mb-1">🤍 تشجيع بلا رياء ولا تنافس</h3>
+                        <p class="text-sm text-ink/80">لا توجد لوحات شرف تنافسية ولا نقاط؛ الهدف هو الصحبة الصالحة والتذكير اللطيف بأذكار اليوم والليلة.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-skyBlue/25 border-2 border-deepBlue">
+                        <h3 class="font-bold text-lg text-deepBlue mb-1">🔒 خصوصية وأمان تام</h3>
+                        <p class="text-sm text-ink/80">كل مجلس محمي برمز وكلمة مرور مشفرة، ولا تظهر عناوين البريد الإلكتروني لأي عضو داخل المجلس.</p>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <button onclick="app.navigate('landing')" class="btn-scrapbook px-6 py-2.5 rounded-xl bg-deepBlue text-cream font-bold text-sm">
+                        العودة للرئيسية
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             3. AUTHENTICATION VIEWS (تسجيل الدخول / إنشاء حساب / استعادة كلمة المرور)
+             ================================================= -->
+        <section id="view-login" class="view-section hidden">
+            <div class="max-w-md mx-auto paper-card rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] relative space-y-6">
+                <div class="bookmark-ribbon absolute top-0 left-8"></div>
+                <div class="space-y-1 pt-2">
+                    <span class="px-3 py-1 rounded-full bg-skyBlue/35 border border-deepBlue text-xs font-extrabold text-deepBlue">بوابة الدخول</span>
+                    <h2 class="font-editorial text-3xl font-bold text-deepBlue pt-1">تسجيل الدخول 🤍</h2>
+                    <p class="text-xs font-bold text-ink/70">ادخل إلى دفترك ومجالسك المحفوظة</p>
+                </div>
+
+                <form onsubmit="app.handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">البريد الإلكتروني</label>
+                        <input id="login-email" type="email" required dir="ltr" placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-deepBlue font-semibold text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">كلمة المرور</label>
+                        <input id="login-password" type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-deepBlue font-semibold text-sm focus:outline-none">
+                    </div>
+                    <div class="flex items-center justify-between text-xs font-bold">
+                        <button type="button" onclick="app.navigate('reset-password')" class="text-deepBlue underline">نسيت كلمة المرور؟</button>
+                        <button type="button" onclick="app.quickDemoLogin()" class="text-forestGreen underline">✨ دخول سريع بحساب أحمد</button>
+                    </div>
+                    <button type="submit" class="btn-scrapbook w-full py-3.5 rounded-2xl bg-deepBlue text-cream font-extrabold text-base">
+                        تسجيل الدخول ←
+                    </button>
+                </form>
+
+                <div class="pt-4 border-t-2 border-dashed border-deepBlue/20 text-center">
+                    <p class="text-xs font-bold text-ink/70 mb-2">ليس لديك حساب في هنا نذكر؟</p>
+                    <button onclick="app.navigate('register')" class="btn-scrapbook w-full py-2.5 rounded-xl bg-warmYellow text-ink font-extrabold text-xs">
+                        إنشاء حساب جديد ✦
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-register" class="view-section hidden">
+            <div class="max-w-md mx-auto paper-card-green rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] relative space-y-5">
+                <div class="bookmark-ribbon absolute top-0 left-8"></div>
+                <div class="space-y-1 pt-2">
+                    <span class="px-3 py-1 rounded-full bg-sageGreen/45 border border-forestGreen text-xs font-extrabold text-forestGreen">عضوية جديدة</span>
+                    <h2 class="font-editorial text-3xl font-bold text-forestGreen pt-1">إنشاء حساب جديد 🌿</h2>
+                    <p class="text-xs font-bold text-ink/70">ابدأ دفترك اليومي وشارك الأذكار مع من تحب</p>
+                </div>
+
+                <form onsubmit="app.handleRegister(event)" class="space-y-3.5">
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">الاسم</label>
+                        <input id="reg-name" type="text" required maxlength="40" placeholder="اسمك الذي يظهر في المجلس" class="w-full px-4 py-2.5 rounded-xl bg-cream border-2 border-forestGreen font-semibold text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">البريد الإلكتروني</label>
+                        <input id="reg-email" type="email" required dir="ltr" placeholder="name@example.com" class="w-full px-4 py-2.5 rounded-xl bg-cream border-2 border-forestGreen font-semibold text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">كلمة المرور</label>
+                        <input id="reg-password" type="password" required minlength="8" placeholder="8 خانات على الأقل (حرف ورقم)" class="w-full px-4 py-2.5 rounded-xl bg-cream border-2 border-forestGreen font-semibold text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">تأكيد كلمة المرور</label>
+                        <input id="reg-confirm" type="password" required minlength="8" placeholder="أعد كتابة كلمة المرور" class="w-full px-4 py-2.5 rounded-xl bg-cream border-2 border-forestGreen font-semibold text-sm focus:outline-none">
+                    </div>
+                    <button type="submit" class="btn-scrapbook w-full py-3.5 rounded-2xl bg-forestGreen text-cream font-extrabold text-base mt-2">
+                        إنشاء الحساب 🤍
+                    </button>
+                </form>
+
+                <div class="pt-3 border-t-2 border-dashed border-forestGreen/25 text-center">
+                    <button onclick="app.navigate('login')" class="text-xs font-extrabold text-deepBlue underline">
+                        لديك حساب بالفعل؟ تسجيل الدخول
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-verify-email" class="view-section hidden">
+            <div class="max-w-md mx-auto paper-card rounded-3xl p-8 bg-[#FFFDF9] text-center space-y-5">
+                <div class="die-cut-sticker w-16 h-16 mx-auto rounded-2xl bg-warmYellow text-3xl anim-sticker-float">✉️</div>
+                <h2 class="font-editorial text-3xl font-bold text-deepBlue">تأكيد البريد الإلكتروني</h2>
+                <p id="verify-email-message" class="text-sm font-semibold text-ink/80 leading-relaxed">
+                    أرسلنا رابط التفعيل إلى بريدك الإلكتروني. يرجى تأكيد البريد للمتابعة.
+                </p>
+                <button id="btn-simulate-verify" onclick="app.confirmSimulatedEmail()" class="btn-scrapbook w-full py-3.5 rounded-2xl bg-forestGreen text-cream font-extrabold text-sm">
+                    ✓ تأكيد البريد الإلكتروني الآن (تفعيل فوري)
+                </button>
+                <button onclick="app.navigate('login')" class="text-xs font-bold text-deepBlue underline block mx-auto">
+                    العودة لتسجيل الدخول
+                </button>
+            </div>
+        </section>
+
+        <section id="view-reset-password" class="view-section hidden">
+            <div class="max-w-md mx-auto paper-card rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] space-y-5">
+                <span class="px-3 py-1 rounded-full bg-warmYellow border border-deepBlue text-xs font-extrabold text-ink">استعادة الحساب</span>
+                <h2 class="font-editorial text-3xl font-bold text-deepBlue">نسيت كلمة المرور؟</h2>
+                <p class="text-xs font-semibold text-ink/75">أدخل بريدك الإلكتروني وسنرسل لك رابطاً آمناً لإعادة تعيين كلمة المرور.</p>
+                <form onsubmit="app.handlePasswordReset(event)" class="space-y-4">
+                    <input id="reset-email" type="email" required dir="ltr" placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-deepBlue font-semibold text-sm">
+                    <button type="submit" class="btn-scrapbook w-full py-3 rounded-2xl bg-deepBlue text-cream font-extrabold text-sm">
+                        إرسال رابط الاستعادة ✉️
+                    </button>
+                </form>
+                <button onclick="app.navigate('login')" class="text-xs font-bold text-deepBlue underline">العودة لتسجيل الدخول</button>
+            </div>
+        </section>
+
+        <!-- =================================================
+             4. HOME DASHBOARD VIEW (مجالسي — CREATIVE STUDIO)
+             ================================================= -->
+        <section id="view-dashboard" class="view-section hidden space-y-14">
+            <!-- Artistic Journal Welcome Banner + Two Portal Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <!-- Welcome Note Card (7 cols) -->
+                <div class="lg:col-span-7 paper-card rounded-3xl p-7 sm:p-9 notebook-paper flex flex-col justify-between relative overflow-hidden">
+                    <div class="bookmark-ribbon absolute top-0 left-8"></div>
+                    <div class="space-y-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warmYellow/60 border border-deepBlue text-xs font-extrabold text-deepBlue">
+                            <span>📅 صفحة اليوم:</span>
+                            <span id="dashboard-today-date"></span>
+                        </div>
+                        <h1 class="font-editorial text-3xl sm:text-5xl font-bold text-deepBlue pt-1">
+                            أهلاً بيك في هنا نذكر 🤍
+                        </h1>
+                        <p class="text-base text-ink/80 font-semibold">
+                            "مكاننا للذكر معًا" — مرحباً بعودتك يا <span id="dashboard-welcome-name" class="marker-yellow font-extrabold text-deepBlue"></span>
+                        </p>
+                    </div>
+
+                    <div class="pt-6 flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-bold text-forestGreen bg-sageGreen/30 px-3.5 py-1.5 rounded-full border border-forestGreen">
+                            🌿 اختر دفتراً من رفّ مجالسنا بالأسفل أو افتح مجلساً جديداً
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Two Side-by-Side Creative Action Portals (5 cols) -->
+                <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Create Room Portal -->
+                    <div onclick="app.navigate('create-room')" class="arch-card-green p-6 pt-9 bg-sageGreen/25 flex flex-col justify-between items-center text-center cursor-pointer group">
+                        <div class="die-cut-sticker w-16 h-16 rounded-2xl bg-warmYellow anim-sticker-float">
+                            <svg class="w-9 h-9" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 33V18M20 18C20 12 26 9 31 11C31 16 26 20 20 18ZM20 22C20 16 14 13 9 15C9 20 14 24 20 22Z" stroke="#355B45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="#A8BFA0"/>
+                                <circle cx="20" cy="9" r="3" fill="#F0C7CF" stroke="#355B45" stroke-width="1.8"/>
+                            </svg>
+                        </div>
+                        <div class="space-y-1 my-3">
+                            <h2 class="font-editorial text-2xl font-bold text-forestGreen">إنشاء مجلس</h2>
+                            <p class="text-xs text-ink/75 font-semibold">افتح دفتراً جديداً لمن تحب</p>
+                        </div>
+                        <button class="btn-scrapbook w-full py-2.5 rounded-xl bg-forestGreen text-cream font-extrabold text-xs">
+                            + مجلس جديد
+                        </button>
+                    </div>
+
+                    <!-- Join Room Portal -->
+                    <div onclick="app.navigate('join-room')" class="arch-card p-6 pt-9 bg-skyBlue/25 flex flex-col justify-between items-center text-center cursor-pointer group">
+                        <div class="die-cut-sticker w-16 h-16 rounded-2xl bg-skyBlue/60 anim-sticker-float-delay">
+                            <svg class="w-9 h-9" viewBox="0 0 40 40" fill="none">
+                                <circle cx="15" cy="20" r="6" fill="#F4D477" stroke="#315B8A" stroke-width="2.4"/>
+                                <path d="M21 20H33M29 20V25M33 20V24" stroke="#315B8A" stroke-width="2.4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="space-y-1 my-3">
+                            <h2 class="font-editorial text-2xl font-bold text-deepBlue">انضم لمجلس</h2>
+                            <p class="text-xs text-ink/75 font-semibold">أدخل تذكرة الرمز وكلمة المرور</p>
+                        </div>
+                        <button class="btn-scrapbook w-full py-2.5 rounded-xl bg-deepBlue text-cream font-extrabold text-xs">
+                            انضم الآن ←
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Joined Rooms Bookshelf (رفّ دفاتر مجالسي) -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between border-b-2 border-dashed border-deepBlue/25 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">📚</span>
+                        <div>
+                            <h2 class="font-editorial text-3xl font-bold text-deepBlue">رفّ دفاتر مجالسي</h2>
+                            <p class="text-xs font-bold text-ink/60">اضغط على أي دفتر لفتح محراب الذكر اليومي الخاص به</p>
+                        </div>
+                    </div>
+                    <span id="my-rooms-count" class="ticket-stub font-extrabold text-xs text-ink">0 مجالس</span>
+                </div>
+
+                <div id="my-rooms-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Populated dynamically as Hardcover Journals -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             5. CREATE A ROOM VIEW (إنشاء مجلس)
+             ================================================= -->
+        <section id="view-create-room" class="view-section hidden">
+            <!-- Form State -->
+            <div id="create-room-form-card" class="max-w-xl mx-auto paper-card-green rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] relative">
+                <div class="washi-tape washi-yellow -top-3 right-12"></div>
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <span class="text-xs font-bold text-forestGreen bg-sageGreen/40 px-3 py-1 rounded-full border border-forestGreen">مجلس جديد</span>
+                        <h2 class="font-editorial text-3xl font-bold text-forestGreen mt-1">إنشاء مجلس ذكر</h2>
+                    </div>
+                    <button onclick="app.navigate('dashboard')" class="px-3 py-1.5 rounded-xl border-2 border-deepBlue text-xs font-bold">رجوع</button>
+                </div>
+
+                <form onsubmit="app.handleCreateRoom(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-ink mb-1">اسم المجلس *</label>
+                        <input id="create-room-name" type="text" required maxlength="60" placeholder="مثال: مجلس العائلة، صحبة الفجر..." class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-forestGreen focus:outline-none font-semibold">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-ink mb-1">وصف اختياري</label>
+                        <textarea id="create-room-desc" rows="2" maxlength="160" placeholder="هنا نذكر معًا 🤍" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-forestGreen focus:outline-none font-semibold"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-ink mb-1">كلمة مرور المجلس *</label>
+                        <input id="create-room-pass" type="password" required minlength="4" placeholder="كلمة مرور لمشاركتها مع الأعضاء عند الانضمام فقط" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-forestGreen focus:outline-none font-semibold">
+                        <p class="text-xs text-ink/65 mt-1">تُحفظ مشفّرة بالكامل، ويحتاجها العضو مرة واحدة فقط عند الانضمام لأول مرة.</p>
+                    </div>
+
+                    <button type="submit" class="btn-scrapbook w-full py-3.5 rounded-2xl bg-forestGreen text-cream font-extrabold text-base mt-2">
+                        إنشاء المجلس الآن 🤍
+                    </button>
+                </form>
+            </div>
+
+            <!-- Post-Creation Ready State (مجلسك جاهز 🤍) -->
+            <div id="create-room-ready-card" class="hidden max-w-xl mx-auto paper-card rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#FFFDF9] to-warmYellow/30 text-center space-y-6 relative">
+                <div class="washi-tape washi-pink -top-3 left-1/3"></div>
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-warmYellow border-2 border-deepBlue flex items-center justify-center text-3xl shadow-[4px_4px_0px_#315B8A]">
+                    🎉
+                </div>
+                <h2 class="font-editorial text-4xl font-bold text-deepBlue">مجلسك جاهز 🤍</h2>
+                <p id="ready-room-title" class="text-lg font-bold text-forestGreen"></p>
+
+                <div class="p-5 rounded-2xl bg-[#FFFDF9] border-2 border-deepBlue space-y-4 text-right">
+                    <div class="flex items-center justify-between border-b border-deepBlue/20 pb-3">
+                        <span class="text-sm font-bold text-ink/75">رمز المجلس:</span>
+                        <span id="ready-room-code" dir="ltr" class="font-mono text-2xl font-black text-deepBlue bg-skyBlue/30 px-3 py-1 rounded-xl border-2 border-deepBlue">HN-0000</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold text-ink/75">كلمة مرور المجلس:</span>
+                        <div class="flex items-center gap-2">
+                            <span id="ready-room-pass-val" class="font-mono text-base font-bold text-forestGreen bg-cream px-3 py-1 rounded-lg border border-deepBlue">••••••</span>
+                            <button type="button" onclick="app.toggleReadyPassword()" id="btn-reveal-ready-pass" class="px-2.5 py-1 rounded-lg bg-warmYellow/60 border border-deepBlue text-xs font-bold">
+                                إظهار 👁️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copy & Share Actions -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="app.copyCreatedRoomInvite()" class="btn-scrapbook py-3 px-4 rounded-xl bg-skyBlue text-ink font-extrabold text-sm flex items-center justify-center gap-2">
+                        <span>📋 نسخ بيانات المجلس</span>
+                    </button>
+                    <button onclick="app.shareCreatedRoomInvite()" class="btn-scrapbook py-3 px-4 rounded-xl bg-warmYellow text-ink font-extrabold text-sm flex items-center justify-center gap-2">
+                        <span>📤 مشاركة الدعوة</span>
+                    </button>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="app.openCreatedRoomNow()" class="btn-scrapbook w-full py-3.5 rounded-2xl bg-forestGreen text-cream font-extrabold text-base">
+                        افتح لوحة المجلس الآن ←
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             6. JOIN A ROOM VIEW (الانضمام إلى مجلس)
+             ================================================= -->
+        <section id="view-join-room" class="view-section hidden">
+            <div class="max-w-lg mx-auto arch-card p-7 sm:p-10 pt-14 bg-[#FFFDF9] relative space-y-6">
+                <div class="bookmark-ribbon absolute top-0 left-1/2 -translate-x-1/2"></div>
+                <div class="text-center space-y-2 pt-3">
+                    <div class="die-cut-sticker w-16 h-16 mx-auto rounded-2xl bg-warmYellow anim-sticker-float">
+                        <span class="text-2xl">🔑</span>
+                    </div>
+                    <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-deepBlue">الانضمام إلى مجلس</h2>
+                    <p class="text-xs font-bold text-ink/70">أدخل تذكرة رمز المجلس وكلمة المرور لمرة واحدة فقط</p>
+                    <p class="text-[11px] font-extrabold text-forestGreen bg-sageGreen/30 inline-block px-3 py-1 rounded-full border border-forestGreen">
+                        💡 للتجربة السريعة: الرمز <span dir="ltr" class="font-mono">HN-2025</span> وكلمة المرور <span dir="ltr" class="font-mono">1234</span>
+                    </p>
+                </div>
+
+                <div id="join-error-box" class="hidden p-3.5 rounded-2xl bg-softPink/80 border-2 border-ink text-center font-extrabold text-xs text-ink">
+                    رمز المجلس أو كلمة المرور غير صحيحة.
+                </div>
+
+                <form onsubmit="app.handleJoinRoom(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">رمز المجلس *</label>
+                        <input id="join-room-code" type="text" required dir="ltr" placeholder="HN-4827" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-deepBlue font-mono font-black text-center text-lg uppercase focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-ink mb-1">كلمة المرور *</label>
+                        <input id="join-room-pass" type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-cream border-2 border-deepBlue font-semibold text-center focus:outline-none">
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        <button type="submit" class="btn-scrapbook flex-1 py-3.5 rounded-2xl bg-deepBlue text-cream font-extrabold text-base">
+                            انضم إلى المجلس 🤍
+                        </button>
+                        <button type="button" onclick="app.navigate('dashboard')" class="px-5 py-3.5 rounded-2xl bg-cream border-2 border-deepBlue font-extrabold text-xs text-deepBlue">
+                            رجوع
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- =================================================
+             7. ROOM DASHBOARD VIEW (لوحة المجلس — CREATIVE & UNCLUTTERED)
+             ================================================= -->
+        <section id="view-room" class="view-section hidden space-y-10">
+            <!-- Open Journal Masthead Header -->
+            <div class="paper-card rounded-3xl p-6 sm:p-8 notebook-paper relative overflow-hidden">
+                <div class="bookmark-ribbon absolute top-0 left-10 hidden sm:block"></div>
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <button onclick="app.navigate('dashboard')" class="px-3.5 py-1.5 rounded-full bg-[#FFFDF9] border-2 border-deepBlue text-xs font-extrabold text-deepBlue hover:bg-warmYellow transition-colors">
+                                → رفّ مجالسي
+                            </button>
+                            <span id="room-header-code" dir="ltr" class="ticket-stub font-mono text-xs font-black text-ink">HN-4827</span>
+                            <span id="room-header-members-badge" class="px-3.5 py-1 rounded-full bg-sageGreen/45 border-2 border-forestGreen text-xs font-extrabold text-forestGreen">8 أعضاء</span>
+                        </div>
+                        <h1 id="room-header-name" class="font-editorial text-4xl sm:text-5xl font-bold text-deepBlue pt-1">مجلس العائلة</h1>
+                        <p id="room-header-desc" class="font-editorial text-xl text-forestGreen">"هنا نذكر معًا 🤍"</p>
+                    </div>
+
+                    <!-- Clean Secondary Utility Pill Buttons -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button onclick="app.copyCurrentRoomCode()" class="btn-scrapbook px-4 py-2.5 rounded-xl bg-warmYellow text-ink font-extrabold text-xs">
+                            📋 نسخ تذكرة الرمز
+                        </button>
+                        <button onclick="app.openRoomHistory()" class="btn-scrapbook px-4 py-2.5 rounded-xl bg-[#FFFDF9] text-deepBlue font-extrabold text-xs">
+                            📅 أرشيف الأيام
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Celebration Banner After Completion -->
+            <div id="dhikr-celebration-banner" class="hidden paper-card-green rounded-2xl p-4 bg-warmYellow/60 text-center">
+                <p class="font-editorial text-2xl font-bold text-deepBlue">✨ تقبّل الله 🤍 — تم ختم ذكرك في دفتر المجلس اليوم ✨</p>
+            </div>
+
+            <!-- Distributed Mode Switcher (Prevents Clutter — Each Feature Gets Its Own Artistic Canvas) -->
+            <div class="flex flex-wrap items-center justify-center gap-3 bg-[#FFFDF9] p-2.5 rounded-full border-2 border-deepBlue shadow-[4px_4px_0px_#315B8A] max-w-2xl mx-auto">
+                <button id="room-tab-btn-sanctuary" onclick="app.switchRoomTab('sanctuary')" class="px-5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm bg-deepBlue text-cream transition-all">
+                    ☀️🌙 محراب الذكر اليومي
+                </button>
+                <button id="room-tab-btn-activity" onclick="app.switchRoomTab('activity')" class="px-5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm bg-transparent text-ink/80 hover:bg-cream transition-all">
+                    📌 قصاصات آخر من ذكر
+                </button>
+                <button id="room-tab-btn-members" onclick="app.switchRoomTab('members')" class="px-5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm bg-transparent text-ink/80 hover:bg-cream transition-all">
+                    🌿 دائرة الصحبة
+                </button>
+                <button id="btn-toggle-admin" onclick="app.switchRoomTab('admin')" class="hidden px-5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm bg-transparent text-ink/80 hover:bg-cream transition-all">
+                    ⚙️ ختم المؤسس
+                </button>
+            </div>
+
+            <!-- ==========================================
+                 SPACE 1: CELESTIAL ARCHED DOMES (Morning & Evening)
+                 ========================================== -->
+            <div id="room-tab-sanctuary" class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
+                <!-- Morning Adhkar Arched Dome (قبة أذكار الصباح) -->
+                <div class="arch-card-green p-7 sm:p-9 pt-14 bg-gradient-to-b from-warmYellow/35 via-[#FFFDF9] to-[#FFFDF9] flex flex-col justify-between space-y-7 relative overflow-hidden">
+                    <!-- Hanging Celestial Sun Mobile Ornament from Top of Arch -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center anim-pendulum pointer-events-none">
+                        <div class="w-0.5 h-6 bg-forestGreen"></div>
+                        <div class="w-5 h-5 rounded-full bg-warmYellow border-2 border-forestGreen flex items-center justify-center text-[10px]">✦</div>
+                    </div>
+
+                    <div class="space-y-5 text-center">
+                        <!-- Custom Die-Cut Illustrated Sun Sticker -->
+                        <div class="die-cut-sticker mx-auto w-24 h-24 rounded-full bg-warmYellow anim-sticker-float">
+                            <svg class="w-16 h-16 anim-spin-slow" viewBox="0 0 64 64" fill="none">
+                                <circle cx="32" cy="32" r="14" fill="#FFFDF9" stroke="#355B45" stroke-width="2.5"/>
+                                <circle cx="32" cy="32" r="9" fill="#F4D477"/>
+                                <path d="M32 6V12M32 52V58M6 32H12M52 32H58M13.6 13.6L17.8 17.8M46.2 46.2L50.4 50.4M50.4 13.6L46.2 17.8M17.8 46.2L13.6 50.4" stroke="#355B45" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-extrabold tracking-widest text-forestGreen uppercase">MORNING ADHKAR</span>
+                            <h2 class="font-editorial text-4xl font-bold text-deepBlue">أذكار الصباح</h2>
+                            <p id="room-morning-stat" class="text-xs font-extrabold text-forestGreen pt-1">0 من 0 أعضاء قرأوها اليوم</p>
+                        </div>
+
+                        <!-- Open Reader Pill -->
+                        <div>
+                            <button onclick="app.toggleReaderModal('morning')" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#FFFDF9] border-2 border-forestGreen text-xs font-extrabold text-forestGreen hover:bg-warmYellow/50 transition-colors shadow-[3px_3px_0px_#355B45]">
+                                <span>📖 افتح مطوية أذكار الصباح للقراءة</span>
+                            </button>
+                        </div>
+
+                        <!-- Artistic Shimmer Progress Meter -->
+                        <div class="p-4 rounded-2xl bg-cream/80 border-2 border-forestGreen/30 space-y-2 text-right">
+                            <div class="flex justify-between text-xs font-extrabold text-forestGreen">
+                                <span>اكتمال نور الصباح في المجلس</span>
+                                <span id="room-morning-pct">0%</span>
+                            </div>
+                            <div class="w-full h-4 bg-[#FFFDF9] rounded-full overflow-hidden border-2 border-forestGreen p-0.5">
+                                <div id="room-morning-bar" class="bg-forestGreen progress-shimmer h-full rounded-full transition-all duration-700" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <button id="btn-complete-morning" onclick="app.recordDhikr('morning')" class="btn-scrapbook w-full py-4 rounded-2xl bg-forestGreen text-cream font-extrabold text-lg">
+                            قرأت أذكار الصباح ✓
+                        </button>
+                        <p id="morning-done-note" class="hidden text-center text-xs font-extrabold text-forestGreen pt-1">
+                            تقبّل الله 🤍 — تم ختم أذكار الصباح اليوم
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Evening Adhkar Arched Dome (قبة أذكار المساء) -->
+                <div class="arch-card p-7 sm:p-9 pt-14 bg-gradient-to-b from-skyBlue/35 via-[#FFFDF9] to-[#FFFDF9] flex flex-col justify-between space-y-7 relative overflow-hidden">
+                    <!-- Hanging Celestial Crescent Mobile Ornament from Top of Arch -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center anim-pendulum pointer-events-none" style="animation-delay: 0.9s">
+                        <div class="w-0.5 h-6 bg-deepBlue"></div>
+                        <div class="w-5 h-5 rounded-full bg-skyBlue border-2 border-deepBlue flex items-center justify-center text-[10px]">★</div>
+                    </div>
+
+                    <div class="space-y-5 text-center">
+                        <!-- Custom Die-Cut Illustrated Crescent Moon Sticker -->
+                        <div class="die-cut-sticker mx-auto w-24 h-24 rounded-full bg-skyBlue/65 anim-sticker-float-delay">
+                            <svg class="w-16 h-16 anim-sway" viewBox="0 0 64 64" fill="none">
+                                <path d="M41 14C29 17 22 29 26 41C29 49 38 54 47 52C36 57 22 51 17 39C12 27 18 13 31 9C34 8 38 11 41 14Z" fill="#F4D477" stroke="#315B8A" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M46 18L48 23L53 25L48 27L46 32L44 27L39 25L44 23L46 18Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="1.8"/>
+                            </svg>
+                        </div>
+
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-extrabold tracking-widest text-deepBlue uppercase">EVENING ADHKAR</span>
+                            <h2 class="font-editorial text-4xl font-bold text-deepBlue">أذكار المساء</h2>
+                            <p id="room-evening-stat" class="text-xs font-extrabold text-deepBlue pt-1">0 من 0 أعضاء قرأوها اليوم</p>
+                        </div>
+
+                        <!-- Open Reader Pill -->
+                        <div>
+                            <button onclick="app.toggleReaderModal('evening')" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#FFFDF9] border-2 border-deepBlue text-xs font-extrabold text-deepBlue hover:bg-skyBlue/35 transition-colors shadow-[3px_3px_0px_#315B8A]">
+                                <span>📖 افتح مطوية أذكار المساء للقراءة</span>
+                            </button>
+                        </div>
+
+                        <!-- Artistic Shimmer Progress Meter -->
+                        <div class="p-4 rounded-2xl bg-cream/80 border-2 border-deepBlue/30 space-y-2 text-right">
+                            <div class="flex justify-between text-xs font-extrabold text-deepBlue">
+                                <span>اكتمال سكينة المساء في المجلس</span>
+                                <span id="room-evening-pct">0%</span>
+                            </div>
+                            <div class="w-full h-4 bg-[#FFFDF9] rounded-full overflow-hidden border-2 border-deepBlue p-0.5">
+                                <div id="room-evening-bar" class="bg-deepBlue progress-shimmer h-full rounded-full transition-all duration-700" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <button id="btn-complete-evening" onclick="app.recordDhikr('evening')" class="btn-scrapbook w-full py-4 rounded-2xl bg-deepBlue text-cream font-extrabold text-lg">
+                            قرأت أذكار المساء ✓
+                        </button>
+                        <p id="evening-done-note" class="hidden text-center text-xs font-extrabold text-deepBlue pt-1">
+                            تقبّل الله 🤍 — تم ختم أذكار المساء اليوم
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SPACE 2: PINNED SCRAPBOOK NOTES (آخر من ذكر 🤍)
+                 ========================================== -->
+            <div id="room-tab-activity" class="hidden paper-card rounded-3xl p-7 sm:p-9 notebook-paper space-y-6">
+                <div class="flex items-center justify-between border-b-2 border-dashed border-deepBlue/25 pb-4">
+                    <div>
+                        <h3 class="font-editorial text-3xl font-bold text-deepBlue">📌 لوحة قصاصات آخر من ذكر 🤍</h3>
+                        <p class="text-xs font-bold text-ink/65 mt-1">كل قصاصة توثّق ذكراً كُتب في صحائف هذا المجلس</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-warmYellow border border-deepBlue text-xs font-extrabold text-ink">تحديث تلقائي</span>
+                </div>
+                <div id="room-activity-feed" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                    <!-- Populated dynamically as Pinned Scrapbook Notes -->
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SPACE 3: BOTANICAL MEDALLIONS (أعضاء المجلس)
+                 ========================================== -->
+            <div id="room-tab-members" class="hidden paper-card-green rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-dashed border-forestGreen/25 pb-4">
+                    <div>
+                        <h3 class="font-editorial text-3xl font-bold text-forestGreen">🌿 دائرة الصحبة وأعضاء المجلس</h3>
+                        <p class="text-xs font-bold text-ink/65 mt-1">حالة إتمام أذكار اليوم لكل عضو مع حفظ الخصوصية التامة</p>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs font-extrabold text-deepBlue bg-cream px-3.5 py-1.5 rounded-full border border-deepBlue">
+                        <span>🌅 الصباح</span>
+                        <span>•</span>
+                        <span>🌙 المساء</span>
+                    </div>
+                </div>
+                <div id="room-members-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Populated dynamically as Medallion Cards -->
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SPACE 4: ADMIN LEDGER (إعدادات المجلس)
+                 ========================================== -->
+            <div id="room-admin-panel" class="hidden paper-card rounded-3xl p-7 sm:p-9 bg-[#FFFDF9] space-y-6">
+                <div class="border-b-2 border-dashed border-deepBlue/25 pb-3">
+                    <span class="text-xs font-extrabold text-forestGreen">ختم وصلاحيات مؤسس المجلس</span>
+                    <h3 class="font-editorial text-3xl font-bold text-deepBlue mt-0.5">إدارة الدفتر وإعدادات الأمان</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Edit Name & Description -->
+                    <form onsubmit="app.handleAdminUpdateInfo(event)" class="space-y-3 bg-cream/60 p-5 rounded-2xl border-2 border-deepBlue">
+                        <h4 class="font-extrabold text-deepBlue text-sm">تعديل عنوان ووصف الدفتر</h4>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">اسم المجلس</label>
+                            <input id="admin-room-name" type="text" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF9] border-2 border-deepBlue font-semibold text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">الوصف</label>
+                            <input id="admin-room-desc" type="text" class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF9] border-2 border-deepBlue font-semibold text-sm">
+                        </div>
+                        <button type="submit" class="btn-scrapbook px-5 py-2.5 rounded-xl bg-forestGreen text-cream font-extrabold text-xs">
+                            حفظ التعديلات ✓
+                        </button>
+                    </form>
+
+                    <!-- Change Password & Regenerate Code -->
+                    <div class="space-y-4 bg-cream/60 p-5 rounded-2xl border-2 border-deepBlue flex flex-col justify-between">
+                        <form onsubmit="app.handleAdminUpdatePassword(event)" class="space-y-2.5">
+                            <h4 class="font-extrabold text-deepBlue text-sm">تغيير كلمة مرور المجلس</h4>
+                            <div class="flex gap-2">
+                                <input id="admin-new-pass" type="password" required minlength="4" placeholder="كلمة مرور جديدة" class="flex-1 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9] border-2 border-deepBlue text-sm font-semibold">
+                                <button type="submit" class="btn-scrapbook px-4 py-2.5 rounded-xl bg-deepBlue text-cream font-extrabold text-xs">تحديث</button>
+                            </div>
+                        </form>
+
+                        <div class="pt-4 border-t-2 border-dashed border-deepBlue/25 flex flex-wrap items-center justify-between gap-2">
+                            <button onclick="app.handleAdminRegenerateCode()" class="btn-scrapbook px-4 py-2 rounded-xl bg-warmYellow text-ink font-extrabold text-xs">
+                                🔄 توليد رمز جديد
+                            </button>
+                            <button onclick="app.handleAdminDeleteRoom()" class="btn-scrapbook px-4 py-2 rounded-xl bg-softPink text-ink font-extrabold text-xs">
+                                🗑️ حذف المجلس
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             8. HISTORY VIEW (السجل)
+             ================================================= -->
+        <section id="view-history" class="view-section hidden space-y-8">
+            <div class="paper-card rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-skyBlue/30 via-[#FFFDF9] to-warmYellow/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="washi-tape washi-yellow -top-3 right-12"></div>
+                <div>
+                    <h1 class="font-editorial text-3xl sm:text-4xl font-bold text-deepBlue">📅 السجل اليومي للمجالس</h1>
+                    <p class="text-sm font-bold text-forestGreen mt-1">اختر المجلس واضغط على أي يوم لعرض الأعضاء وأوقات القراءة بالتفصيل</p>
+                </div>
+                <div>
+                    <select id="history-room-select" onchange="app.renderHistoryView()" class="px-4 py-2.5 rounded-xl bg-[#FFFDF9] border-2 border-deepBlue font-bold text-sm text-deepBlue focus:outline-none"></select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7">
+                <!-- Calendar Days Cards -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h2 class="font-editorial text-2xl font-bold text-deepBlue">الأيام السابقة</h2>
+                    <div id="history-days-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Selected Date Details -->
+                <div class="lg:col-span-5">
+                    <div class="paper-card rounded-3xl p-6 notebook-paper sticky top-24 space-y-4">
+                        <div class="washi-tape washi-pink -top-3 left-10"></div>
+                        <div class="border-b-2 border-deepBlue/20 pb-3">
+                            <span class="text-xs font-bold text-forestGreen">تفاصيل اليوم المحدد</span>
+                            <h3 id="history-detail-date" class="font-editorial text-2xl font-bold text-deepBlue mt-1">اختر يوماً</h3>
+                        </div>
+                        <div id="history-detail-list" class="space-y-3 max-h-[420px] overflow-y-auto">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             9. PERSONAL PROFILE VIEW (ذكري اليومي / حسابي)
+             ================================================= -->
+        <section id="view-profile" class="view-section hidden space-y-8">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Header Card -->
+                <div class="paper-card rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#FFFDF9] via-cream to-sageGreen/30 relative">
+                    <div class="washi-tape washi-sage -top-3 right-14"></div>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div id="profile-avatar" class="w-16 h-16 rounded-2xl bg-warmYellow border-2 border-deepBlue flex items-center justify-center font-editorial text-3xl font-bold text-deepBlue shadow-[4px_4px_0px_#315B8A]">
+                                أ
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold bg-sageGreen/50 px-3 py-0.5 rounded-full border border-forestGreen text-forestGreen">دفتر ذكري الشخصي</span>
+                                <h1 class="font-editorial text-3xl sm:text-4xl font-bold text-deepBlue mt-1">ذكري اليومي 🤍</h1>
+                                <p id="profile-display-name" class="text-sm font-bold text-ink/80"></p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-1.5 rounded-full bg-[#FFFDF9] border-2 border-deepBlue text-xs font-bold text-deepBlue">
+                            لا نقاط ولا تنافس — أثرٌ طيبٌ يبقى 🌿
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="paper-card rounded-3xl p-6 bg-warmYellow/30 text-center space-y-2">
+                        <span class="text-3xl">☀️</span>
+                        <p class="text-sm font-bold text-ink/80">إجمالي أذكار الصباح</p>
+                        <p id="profile-morning-total" class="font-editorial text-4xl font-bold text-deepBlue">0</p>
+                        <span class="text-xs font-semibold text-forestGreen block">مرة مكتملة</span>
+                    </div>
+
+                    <div class="paper-card rounded-3xl p-6 bg-skyBlue/30 text-center space-y-2">
+                        <span class="text-3xl">🌙</span>
+                        <p class="text-sm font-bold text-ink/80">إجمالي أذكار المساء</p>
+                        <p id="profile-evening-total" class="font-editorial text-4xl font-bold text-deepBlue">0</p>
+                        <span class="text-xs font-semibold text-deepBlue block">مرة مكتملة</span>
+                    </div>
+
+                    <div class="paper-card-green rounded-3xl p-6 bg-sageGreen/30 text-center space-y-2">
+                        <span class="text-3xl">🌿</span>
+                        <p class="text-sm font-bold text-ink/80">أيام المشاركة</p>
+                        <p id="profile-days-total" class="font-editorial text-4xl font-bold text-forestGreen">0</p>
+                        <span class="text-xs font-semibold text-forestGreen block">يوماً مباركاً</span>
+                    </div>
+                </div>
+
+                <!-- Last Completion Record -->
+                <div class="paper-card rounded-3xl p-6 sm:p-8 notebook-paper flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <h3 class="font-editorial text-2xl font-bold text-deepBlue">آخر إتمام للأذكار</h3>
+                        <p class="text-sm text-ink/75">يُحفظ التاريخ والوقت الدقيق لكل ذكر تقرؤه في مجالسنا</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="px-4 py-2.5 rounded-2xl bg-warmYellow/50 border-2 border-deepBlue">
+                            <span class="text-xs font-bold text-ink/70 block">تاريخ آخر ذكر</span>
+                            <span id="profile-last-date" class="font-bold text-base text-deepBlue">—</span>
+                        </div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-skyBlue/40 border-2 border-deepBlue">
+                            <span class="text-xs font-bold text-ink/70 block">وقت الإتمام</span>
+                            <span id="profile-last-time" class="font-bold text-base text-deepBlue">—</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         CREATIVE INTERACTIVE STICKER & EMOJI RIBBON (شريطة الملصقات التفاعلية السفلية)
+         ===================================================== -->
+    <section class="relative z-20 max-w-4xl mx-auto px-4 mt-14 mb-4">
+        <div class="paper-card rounded-full px-5 py-3 bg-[#FFFDF9]/95 flex flex-wrap items-center justify-between gap-4 relative">
+            <!-- Washi Tape Accent -->
+            <span class="hidden sm:block absolute -top-2.5 left-12 w-20 h-4 bg-softPink/85 border border-dashed border-deepBlue rotate-2 pointer-events-none"></span>
+
+            <div class="flex items-center gap-2.5">
+                <span class="die-cut-sticker w-9 h-9 rounded-full bg-warmYellow text-base anim-sticker-float">✨</span>
+                <div>
+                    <p class="font-editorial text-lg font-bold text-deepBlue leading-none">شريطة الملصقات الحية</p>
+                    <p class="text-[11px] font-bold text-ink/65">اضغط على أي ملصق فني لنثر البهجة والذكر في الصفحة</p>
+                </div>
+            </div>
+
+            <!-- Die-Cut Interactive Emoji Sticker Buttons -->
+            <div class="flex items-center gap-2.5 sm:gap-3 mx-auto sm:mx-0">
+                <button onclick="app.triggerStickerBurst('sun', this)" title="نور الصباح" class="die-cut-sticker w-11 h-11 rounded-2xl bg-warmYellow/80 hover:bg-warmYellow anim-sticker-float">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="7" fill="#FFFDF9" stroke="#315B8A" stroke-width="2"/>
+                        <path d="M16 3V7M16 25V29M3 16H7M25 16H29M6.8 6.8L9.6 9.6M22.4 22.4L25.2 25.2M25.2 6.8L22.4 9.6M9.6 22.4L6.8 25.2" stroke="#315B8A" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button onclick="app.triggerStickerBurst('moon', this)" title="سكينة المساء" class="die-cut-sticker w-11 h-11 rounded-2xl bg-skyBlue/75 hover:bg-skyBlue anim-sticker-float-delay">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                        <path d="M21 7C15 8.5 11.5 14.5 13.5 20.5C15 24.5 19.5 27 24 26C18.5 28.5 11.5 25.5 9 19.5C6.5 13.5 9.5 6.5 16 4.5C17.5 4 19.5 5.5 21 7Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button onclick="app.triggerStickerBurst('butterfly', this)" title="فراشة الدفتر" class="die-cut-sticker w-11 h-11 rounded-2xl bg-softPink/85 hover:bg-softPink anim-butterfly">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                        <path d="M16 17C9 6 2 8 4 16C5 22 12 20 16 17Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="2"/>
+                        <path d="M16 17C23 6 30 8 28 16C27 22 20 20 16 17Z" fill="#8DBCEB" stroke="#315B8A" stroke-width="2"/>
+                        <path d="M16 9V25" stroke="#1E2D24" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button onclick="app.triggerStickerBurst('leaf', this)" title="غصن الزيتون" class="die-cut-sticker w-11 h-11 rounded-2xl bg-sageGreen/80 hover:bg-sageGreen anim-sticker-float">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                        <path d="M7 25C13 18 20 12 26 6" stroke="#355B45" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M14 18C10 14 11 9 16 11C18 13 16 16 14 18Z" fill="#FFFDF9" stroke="#355B45" stroke-width="1.8"/>
+                        <path d="M17 19C21 22 26 19 23 14C20 13 18 16 17 19Z" fill="#F4D477" stroke="#355B45" stroke-width="1.8"/>
+                    </svg>
+                </button>
+                <button onclick="app.triggerStickerBurst('heart', this)" title="ودّ وصحبة" class="die-cut-sticker w-11 h-11 rounded-2xl bg-[#FFFDF9] hover:bg-warmYellow/60 anim-sticker-float-delay">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                        <path d="M16 26C16 26 6 19.5 6 12C6 8.5 8.8 6 12 6C14 6 15.8 7 16 9C16.2 7 18 6 20 6C23.2 6 26 8.5 26 12C26 19.5 16 26 16 26Z" fill="#F0C7CF" stroke="#315B8A" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         MOBILE FLOATING DIE-CUT STICKER RIBBON DOCK (الشريطة السفلية للموبايل)
+         ===================================================== -->
+    <nav class="md:hidden fixed bottom-3 left-3 right-3 z-40 bg-[#FFFDF9]/95 backdrop-blur-md border-2 border-deepBlue rounded-3xl px-2 py-2 flex items-center justify-around shadow-[5px_6px_0px_#315B8A]">
+        <!-- Decorative Washi Tape on Mobile Dock -->
+        <span class="absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-3.5 bg-warmYellow/90 border border-dashed border-deepBlue -rotate-1 pointer-events-none"></span>
+
+        <button onclick="app.navigate('landing')" data-nav="landing" class="nav-btn scrapbook-dock-item flex flex-col items-center gap-1 px-3 py-1 rounded-2xl text-[11px] font-extrabold">
+            <span class="die-cut-sticker w-9 h-9 rounded-xl bg-warmYellow/75">
+                <svg class="w-5 h-5" viewBox="0 0 28 28" fill="none">
+                    <path d="M4 13L14 4L24 13V23H4V13Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M11 23V16H17V23" fill="#F0C7CF" stroke="#315B8A" stroke-width="1.8"/>
+                </svg>
+            </span>
+            <span>الرئيسية</span>
+        </button>
+
+        <button onclick="app.navigate('dashboard')" data-nav="dashboard" class="nav-btn scrapbook-dock-item flex flex-col items-center gap-1 px-3 py-1 rounded-2xl text-[11px] font-extrabold">
+            <span class="die-cut-sticker w-9 h-9 rounded-xl bg-sageGreen/75">
+                <svg class="w-5 h-5" viewBox="0 0 28 28" fill="none">
+                    <path d="M5 21C9 19 12 20 14 22C16 20 19 19 23 21V7C19 5 16 6 14 8C12 6 9 5 5 7V21Z" fill="#FFFDF9" stroke="#355B45" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M14 8V22" stroke="#355B45" stroke-width="2"/>
+                </svg>
+            </span>
+            <span>مجالسي</span>
+        </button>
+
+        <button onclick="app.navigate('history')" data-nav="history" class="nav-btn scrapbook-dock-item flex flex-col items-center gap-1 px-3 py-1 rounded-2xl text-[11px] font-extrabold">
+            <span class="die-cut-sticker w-9 h-9 rounded-xl bg-skyBlue/75">
+                <svg class="w-5 h-5" viewBox="0 0 28 28" fill="none">
+                    <rect x="4" y="6" width="20" height="18" rx="4" fill="#FFFDF9" stroke="#315B8A" stroke-width="2"/>
+                    <path d="M4 11H24M9 4V8M19 4V8" stroke="#315B8A" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="14" cy="17" r="2.5" fill="#F4D477" stroke="#315B8A" stroke-width="1.5"/>
+                </svg>
+            </span>
+            <span>السجل</span>
+        </button>
+
+        <button onclick="app.navigate('profile')" data-nav="profile" class="nav-btn scrapbook-dock-item flex flex-col items-center gap-1 px-3 py-1 rounded-2xl text-[11px] font-extrabold">
+            <span class="die-cut-sticker w-9 h-9 rounded-xl bg-softPink/85">
+                <svg class="w-5 h-5" viewBox="0 0 28 28" fill="none">
+                    <path d="M14 23C14 23 5 17 5 10.5C5 7.5 7.5 5 10.5 5C12.3 5 13.8 6 14 7.5C14.2 6 15.7 5 17.5 5C20.5 5 23 7.5 23 10.5C23 17 14 23 14 23Z" fill="#FFFDF9" stroke="#315B8A" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>ذكري</span>
+        </button>
+    </nav>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer class="relative z-10 border-t-2 border-deepBlue/30 bg-creamDark/60 py-6 mt-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-bold text-deepBlue">
+            <div class="flex items-center gap-2">
+                <span>🌿</span>
+                <span class="font-editorial text-xl">هنا نذكر | Hena Nezkor</span>
+                <span>— مكان صغير يجمعنا على الذكر، مهما كانت المسافات.</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <button onclick="app.navigate('about')" class="underline">عن هنا نذكر</button>
+                <button onclick="app.openSupabaseModal()" class="underline">قاعدة البيانات</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================
+         APPLICATION JAVASCRIPT & DATABASE ENGINE
+         ===================================================== -->
+    <script>
+        const ADHKAR_CONTENT = {
+            morning: [
+                "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَـهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",
+                "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ.",
+                "سُبْحَانَ اللهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ (ثلاث مرات).",
+                "بِسْمِ اللهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلاَ فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ (ثلاث مرات).",
+                "رَضِيتُ بِاللهِ رَبًّا، وَبِالإِسْلاَمِ دِينًا، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيًّا (ثلاث مرات).",
+                "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ."
+            ],
+            evening: [
+                "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَـهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",
+                "اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ.",
+                "أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (ثلاث مرات).",
+                "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي.",
+                "حَسْبِيَ اللهُ لاَ إِلَـهَ إِلاَّ هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ (سبع مرات).",
+                "اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَاوَاتِ وَالأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَـهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي."
+            ]
+        };
+
+        const app = {
+            supabase: null,
+            isCloudSupabase: false,
+            currentUser: null,
+            currentView: 'landing',
+            currentRoomId: null,
+            lastCreatedRoom: null,
+            readyPassVisible: false,
+            selectedHistoryDate: null,
+            pendingVerificationEmail: null,
+
+            // Rate limiting state for room joining
+            joinAttempts: { count: 0, lockUntil: 0 },
+
+            // In-memory store with rich initial collaborative data so the app works immediately out-of-the-box
+            store: {
+                profiles: [],
+                rooms: [],
+                roomMembers: [],
+                dhikrRecords: [],
+                credentials: {} // email -> { passwordHash, verified, userId }
+            },
+
+            async init() {
+                await this.seedInitialData();
+                this.updateAuthUI();
+                this.navigate('landing');
+            },
+
+            // ==========================================
+            // CRYPTOGRAPHIC HASHING & SECURITY HELPERS
+            // ==========================================
+            async hashSecret(secret, salt = 'hena-nezkor-v1') {
+                const enc = new TextEncoder();
+                const data = enc.encode(`${salt}:${secret}`);
+                if (window.crypto && window.crypto.subtle) {
+                    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+                    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+                }
+                // Fallback simple hash if subtle crypto unavailable
+                let h = 2166136261;
+                const str = `${salt}:${secret}`;
+                for (let i = 0; i < str.length; i++) {
+                    h ^= str.charCodeAt(i);
+                    h = Math.imul(h, 16777619);
+                }
+                return 'h_' + (h >>> 0).toString(16);
+            },
+
+            getTodayDateStr() {
+                const d = new Date();
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            },
+
+            getPastDateStr(daysAgo) {
+                const d = new Date();
+                d.setDate(d.getDate() - daysAgo);
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            },
+
+            formatArabicDate(dateStr) {
+                if (!dateStr) return '—';
+                const parts = dateStr.split('-');
+                if (parts.length !== 3) return dateStr;
+                const dateObj = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+                return dateObj.toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' });
+            },
+
+            formatArabicTime(isoStr) {
+                if (!isoStr) return '—';
+                const d = new Date(isoStr);
+                return d.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
+            },
+
+            generateUniqueRoomCode() {
+                let code = '';
+                do {
+                    const num = Math.floor(1000 + Math.random() * 9000);
+                    code = `HN-${num}`;
+                } while (this.store.rooms.some(r => r.room_code === code));
+                return code;
+            },
+
+            showToast(message, type = 'info') {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                const bgClass = type === 'error' ? 'bg-softPink border-ink' : type === 'success' ? 'bg-warmYellow border-deepBlue' : 'bg-[#FFFDF9] border-deepBlue';
+                toast.className = `pointer-events-auto p-4 rounded-2xl border-2 shadow-[4px_4px_0px_#1E2D24] font-bold text-sm text-ink flex items-center justify-between gap-3 ${bgClass}`;
+                toast.innerHTML = `<span>${message}</span>`;
+                container.appendChild(toast);
+                setTimeout(() => {
+                    toast.remove();
+                }, 3800);
+            },
+
+            // ==========================================
+            // INITIAL SEED DATA FOR IMMEDIATE TESTING
+            // ==========================================
+            async seedInitialData() {
+                const today = this.getTodayDateStr();
+                const yesterday = this.getPastDateStr(1);
+                const twoDaysAgo = this.getPastDateStr(2);
+
+                const demoPassHash = await this.hashSecret('Demo1234');
+                const room1PassHash = await this.hashSecret('1234');
+
+                this.store.profiles = [
+                    { id: 'u-ahmed', display_name: 'أحمد', email: 'ahmed@example.com', created_at: new Date().toISOString() },
+                    { id: 'u-mariam', display_name: 'مريم', email: 'mariam@example.com', created_at: new Date().toISOString() },
+                    { id: 'u-omar', display_name: 'عمر', email: 'omar@example.com', created_at: new Date().toISOString() },
+                    { id: 'u-salma', display_name: 'سلمى', email: 'salma@example.com', created_at: new Date().toISOString() },
+                    { id: 'u-youssef', display_name: 'يوسف', email: 'youssef@example.com', created_at: new Date().toISOString() },
+                    { id: 'u-fatima', display_name: 'فاطمة', email: 'fatima@example.com', created_at: new Date().toISOString() }
+                ];
+
+                this.store.credentials['ahmed@example.com'] = {
+                    passwordHash: demoPassHash,
+                    verified: true,
+                    userId: 'u-ahmed'
+                };
+
+                this.store.rooms = [
+                    {
+                        id: 'r-family',
+                        room_code: 'HN-4827',
+                        room_name: 'مجلس العائلة',
+                        description: 'هنا نذكر معًا 🤍',
+                        password_hash: room1PassHash,
+                        created_by: 'u-ahmed',
+                        created_at: new Date().toISOString()
+                    },
+                    {
+                        id: 'r-friends',
+                        room_code: 'HN-2025',
+                        room_name: 'صحبة الفجر والأذكار',
+                        description: 'أذكار الصباح والمساء تجمعنا كل يوم 🌿',
+                        password_hash: room1PassHash,
+                        created_by: 'u-mariam',
+                        created_at: new Date().toISOString()
+                    }
+                ];
+
+                this.store.roomMembers = [
+                    { id: 'rm-1', room_id: 'r-family', user_id: 'u-ahmed', joined_at: new Date().toISOString() },
+                    { id: 'rm-2', room_id: 'r-family', user_id: 'u-mariam', joined_at: new Date().toISOString() },
+                    { id: 'rm-3', room_id: 'r-family', user_id: 'u-omar', joined_at: new Date().toISOString() },
+                    { id: 'rm-4', room_id: 'r-family', user_id: 'u-salma', joined_at: new Date().toISOString() },
+                    { id: 'rm-5', room_id: 'r-family', user_id: 'u-youssef', joined_at: new Date().toISOString() },
+                    { id: 'rm-6', room_id: 'r-family', user_id: 'u-fatima', joined_at: new Date().toISOString() },
+                    // Friends room members
+                    { id: 'rm-7', room_id: 'r-friends', user_id: 'u-mariam', joined_at: new Date().toISOString() },
+                    { id: 'rm-8', room_id: 'r-friends', user_id: 'u-omar', joined_at: new Date().toISOString() }
+                ];
+
+                const makeTime = (dateStr, h, m) => `${dateStr}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00`;
+
+                this.store.dhikrRecords = [
+                    // Today records for Family room
+                    { id: 'dr-1', room_id: 'r-family', user_id: 'u-mariam', dhikr_type: 'morning', date: today, completed_at: makeTime(today, 7, 15) },
+                    { id: 'dr-2', room_id: 'r-family', user_id: 'u-omar', dhikr_type: 'morning', date: today, completed_at: makeTime(today, 7, 42) },
+                    { id: 'dr-3', room_id: 'r-family', user_id: 'u-salma', dhikr_type: 'morning', date: today, completed_at: makeTime(today, 8, 10) },
+                    { id: 'dr-4', room_id: 'r-family', user_id: 'u-fatima', dhikr_type: 'morning', date: today, completed_at: makeTime(today, 8, 50) },
+                    { id: 'dr-5', room_id: 'r-family', user_id: 'u-mariam', dhikr_type: 'evening', date: today, completed_at: makeTime(today, 17, 30) },
+                    { id: 'dr-6', room_id: 'r-family', user_id: 'u-youssef', dhikr_type: 'evening', date: today, completed_at: makeTime(today, 18, 12) },
+
+                    // Yesterday records for Family room
+                    { id: 'dr-7', room_id: 'r-family', user_id: 'u-ahmed', dhikr_type: 'morning', date: yesterday, completed_at: makeTime(yesterday, 6, 55) },
+                    { id: 'dr-8', room_id: 'r-family', user_id: 'u-mariam', dhikr_type: 'morning', date: yesterday, completed_at: makeTime(yesterday, 7, 20) },
+                    { id: 'dr-9', room_id: 'r-family', user_id: 'u-omar', dhikr_type: 'morning', date: yesterday, completed_at: makeTime(yesterday, 8, 5) },
+                    { id: 'dr-10', room_id: 'r-family', user_id: 'u-ahmed', dhikr_type: 'evening', date: yesterday, completed_at: makeTime(yesterday, 18, 5) },
+                    { id: 'dr-11', room_id: 'r-family', user_id: 'u-salma', dhikr_type: 'evening', date: yesterday, completed_at: makeTime(yesterday, 19, 10) },
+
+                    // Two days ago records
+                    { id: 'dr-12', room_id: 'r-family', user_id: 'u-ahmed', dhikr_type: 'morning', date: twoDaysAgo, completed_at: makeTime(twoDaysAgo, 7, 12) },
+                    { id: 'dr-13', room_id: 'r-family', user_id: 'u-fatima', dhikr_type: 'morning', date: twoDaysAgo, completed_at: makeTime(twoDaysAgo, 7, 45) },
+                    { id: 'dr-14', room_id: 'r-family', user_id: 'u-mariam', dhikr_type: 'evening', date: twoDaysAgo, completed_at: makeTime(twoDaysAgo, 17, 50) }
+                ];
+            },
+
+            // ==========================================
+            // NAVIGATION & VIEW ROUTER
+            // ==========================================
+            navigate(view) {
+                const protectedViews = ['dashboard', 'create-room', 'join-room', 'room', 'history', 'profile'];
+                if (protectedViews.includes(view) && !this.currentUser) {
+                    this.showToast('يرجى تسجيل الدخول أولاً للمتابعة 🤍');
+                    view = 'login';
+                }
+
+                this.currentView = view;
+                document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
+                const target = document.getElementById(`view-${view}`);
+                if (target) target.classList.remove('hidden');
+
+                // Highlight active nav button
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    const navTarget = btn.getAttribute('data-nav');
+                    if (navTarget === view) {
+                        btn.classList.add('bg-warmYellow', 'text-ink');
+                    } else {
+                        btn.classList.remove('bg-warmYellow', 'text-ink');
+                    }
+                });
+
+                if (view === 'dashboard') this.renderDashboard();
+                if (view === 'create-room') {
+                    document.getElementById('create-room-form-card').classList.remove('hidden');
+                    document.getElementById('create-room-ready-card').classList.add('hidden');
+                }
+                if (view === 'join-room') {
+                    document.getElementById('join-error-box').classList.add('hidden');
+                }
+                if (view === 'room') this.renderRoomDashboard();
+                if (view === 'history') this.renderHistoryView();
+                if (view === 'profile') this.renderProfileView();
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            handleHeroStartRoom() {
+                if (!this.currentUser) {
+                    this.showToast('أنشئ حسابك أو سجّل دخولك لبدء مجلسك 🤍');
+                    this.navigate('register');
+                } else {
+                    this.navigate('create-room');
+                }
+            },
+
+            handleHeroJoinRoom() {
+                if (!this.currentUser) {
+                    this.showToast('سجّل دخولك للانضمام إلى مجلس 🤍');
+                    this.navigate('login');
+                } else {
+                    this.navigate('join-room');
+                }
+            },
+
+            updateAuthUI() {
+                const guestBtns = document.getElementById('nav-guest-btns');
+                const userBtns = document.getElementById('nav-user-btns');
+                const nameSpan = document.getElementById('nav-user-name');
+
+                if (this.currentUser) {
+                    guestBtns.classList.add('hidden');
+                    userBtns.classList.remove('hidden');
+                    userBtns.classList.add('flex');
+                    nameSpan.textContent = this.currentUser.display_name;
+                } else {
+                    guestBtns.classList.remove('hidden');
+                    userBtns.classList.add('hidden');
+                    userBtns.classList.remove('flex');
+                }
+            },
+
+            // ==========================================
+            // AUTHENTICATION HANDLERS
+            // ==========================================
+            validatePasswordPolicy(pw) {
+                if (!pw || pw.length < 8) return false;
+                const hasLetter = /[a-zA-Z\u0600-\u06FF]/.test(pw);
+                const hasNumber = /[0-9]/.test(pw);
+                return hasLetter && hasNumber;
+            },
+
+            async handleRegister(e) {
+                e.preventDefault();
+                const name = document.getElementById('reg-name').value.trim();
+                const email = document.getElementById('reg-email').value.trim().toLowerCase();
+                const password = document.getElementById('reg-password').value;
+                const confirm = document.getElementById('reg-confirm').value;
+
+                if (!this.validatePasswordPolicy(password)) {
+                    this.showToast('كلمة المرور يجب أن تكون 8 خانات على الأقل وتحتوي على حرف ورقم.', 'error');
+                    return;
+                }
+                if (password !== confirm) {
+                    this.showToast('كلمتا المرور غير متطابقتين.', 'error');
+                    return;
+                }
+
+                if (this.isCloudSupabase && this.supabase) {
+                    const { data, error } = await this.supabase.auth.signUp({
+                        email,
+                        password,
+                        options: { data: { display_name: name } }
+                    });
+                    if (error) {
+                        this.showToast(error.message, 'error');
+                        return;
+                    }
+                    document.getElementById('btn-simulate-verify').classList.add('hidden');
+                    this.navigate('verify-email');
+                    return;
+                }
+
+                if (this.store.credentials[email]) {
+                    this.showToast('البريد الإلكتروني مسجل مسبقاً.', 'error');
+                    return;
+                }
+
+                const userId = 'u-' + Date.now();
+                const passHash = await this.hashSecret(password);
+                const newProfile = {
+                    id: userId,
+                    display_name: name,
+                    email: email,
+                    created_at: new Date().toISOString()
+                };
+
+                this.store.profiles.push(newProfile);
+                this.store.credentials[email] = {
+                    passwordHash: passHash,
+                    verified: false,
+                    userId: userId
+                };
+
+                // Automatically add new user to the family demo room so they can see how rooms work or create their own
+                this.store.roomMembers.push({
+                    id: 'rm-' + Date.now(),
+                    room_id: 'r-family',
+                    user_id: userId,
+                    joined_at: new Date().toISOString()
+                });
+
+                this.pendingVerificationEmail = email;
+                document.getElementById('verify-email-message').textContent = `أرسلنا رسالة تأكيد إلى (${email}). يرجى تأكيد البريد الإلكتروني لتفعيل الحساب.`;
+                document.getElementById('btn-simulate-verify').classList.remove('hidden');
+                this.navigate('verify-email');
+            },
+
+            confirmSimulatedEmail() {
+                if (this.pendingVerificationEmail && this.store.credentials[this.pendingVerificationEmail]) {
+                    const cred = this.store.credentials[this.pendingVerificationEmail];
+                    cred.verified = true;
+                    const profile = this.store.profiles.find(p => p.id === cred.userId);
+                    this.currentUser = profile;
+                    this.updateAuthUI();
+                    this.showToast('تم تأكيد بريدك الإلكتروني بنجاح! أهلاً بك في هنا نذكر 🤍', 'success');
+                    this.navigate('dashboard');
+                }
+            },
+
+            async handleLogin(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value.trim().toLowerCase();
+                const password = document.getElementById('login-password').value;
+
+                if (this.isCloudSupabase && this.supabase) {
+                    const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
+                    if (error) {
+                        this.showToast('البريد الإلكتروني أو كلمة المرور غير صحيحة.', 'error');
+                        return;
+                    }
+                    const user = data.user;
+                    this.currentUser = {
+                        id: user.id,
+                        display_name: user.user_metadata?.display_name || email.split('@')[0],
+                        email: user.email
+                    };
+                    this.updateAuthUI();
+                    this.navigate('dashboard');
+                    return;
+                }
+
+                const cred = this.store.credentials[email];
+                const passHash = await this.hashSecret(password);
+                if (!cred || cred.passwordHash !== passHash) {
+                    this.showToast('البريد الإلكتروني أو كلمة المرور غير صحيحة.', 'error');
+                    return;
+                }
+                if (!cred.verified) {
+                    this.pendingVerificationEmail = email;
+                    this.showToast('يرجى تأكيد بريدك الإلكتروني أولاً.', 'error');
+                    this.navigate('verify-email');
+                    return;
+                }
+
+                this.currentUser = this.store.profiles.find(p => p.id === cred.userId);
+                this.updateAuthUI();
+                this.showToast(`أهلاً بيك يا ${this.currentUser.display_name} 🤍`, 'success');
+                this.navigate('dashboard');
+            },
+
+            quickDemoLogin() {
+                const profile = this.store.profiles.find(p => p.id === 'u-ahmed');
+                this.currentUser = profile;
+                this.updateAuthUI();
+                this.showToast('تم الدخول بحساب (أحمد) التجريبي! أهلاً بيك في هنا نذكر 🤍', 'success');
+                this.navigate('dashboard');
+            },
+
+            async handlePasswordReset(e) {
+                e.preventDefault();
+                const email = document.getElementById('reset-email').value.trim().toLowerCase();
+                if (this.isCloudSupabase && this.supabase) {
+                    await this.supabase.auth.resetPasswordForEmail(email);
+                }
+                this.showToast('إذا كان البريد مسجلاً لدينا، فقد تم إرسال رابط استعادة كلمة المرور بنجاح ✉️', 'success');
+                this.navigate('login');
+            },
+
+            async handleLogout() {
+                if (this.isCloudSupabase && this.supabase) {
+                    await this.supabase.auth.signOut();
+                }
+                this.currentUser = null;
+                this.currentRoomId = null;
+                this.updateAuthUI();
+                this.showToast('تم تسجيل الخروج بأمان. في أمان الله 🤍');
+                this.navigate('landing');
+            },
+
+            // ==========================================
+            // HOME DASHBOARD (مجالسي)
+            // ==========================================
+            getUserJoinedRooms() {
+                if (!this.currentUser) return [];
+                const memberRoomIds = this.store.roomMembers
+                    .filter(rm => rm.user_id === this.currentUser.id)
+                    .map(rm => rm.room_id);
+                return this.store.rooms.filter(r => memberRoomIds.includes(r.id));
+            },
+
+            renderDashboard() {
+                if (!this.currentUser) return;
+                document.getElementById('dashboard-welcome-name').textContent = this.currentUser.display_name;
+                document.getElementById('dashboard-today-date').textContent = this.formatArabicDate(this.getTodayDateStr());
+
+                const rooms = this.getUserJoinedRooms();
+                document.getElementById('my-rooms-count').textContent = `${rooms.length} مجالس`;
+                const grid = document.getElementById('my-rooms-grid');
+                grid.innerHTML = '';
+
+                const today = this.getTodayDateStr();
+
+                if (rooms.length === 0) {
+                    grid.innerHTML = `
+                        <div class="col-span-full paper-card rounded-3xl p-8 text-center space-y-3">
+                            <span class="text-4xl">🌿</span>
+                            <h3 class="font-editorial text-2xl font-bold text-deepBlue">لم تنضم إلى أي مجلس بعد</h3>
+                            <p class="text-sm text-ink/75">أنشئ مجلساً جديداً لعائلتك أو انضم باستخدام رمز مجلس.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                rooms.forEach((room, idx) => {
+                    const members = this.store.roomMembers.filter(m => m.room_id === room.id);
+                    const totalMembers = members.length || 1;
+                    const todayRecords = this.store.dhikrRecords.filter(r => r.room_id === room.id && r.date === today);
+                    const morningCount = todayRecords.filter(r => r.dhikr_type === 'morning').length;
+                    const eveningCount = todayRecords.filter(r => r.dhikr_type === 'evening').length;
+
+                    const morningPct = Math.round((morningCount / totalMembers) * 100);
+                    const eveningPct = Math.round((eveningCount / totalMembers) * 100);
+                    const isGreen = idx % 2 === 1;
+
+                    const card = document.createElement('div');
+                    card.className = `journal-cover-card ${isGreen ? 'journal-cover-green' : ''} p-7 flex flex-col justify-between space-y-6 cursor-pointer relative overflow-hidden`;
+                    card.onclick = () => this.openRoom(room.id);
+
+                    card.innerHTML = `
+                        <div class="bookmark-ribbon absolute top-0 left-7"></div>
+                        <div class="space-y-3 pl-10">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span dir="ltr" class="ticket-stub font-mono text-xs font-black text-ink">${room.room_code}</span>
+                                <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-sageGreen/35 border border-forestGreen text-forestGreen">${totalMembers} أعضاء</span>
+                            </div>
+                            <!-- Pasted Editorial Label on Journal Cover -->
+                            <div class="p-4 rounded-2xl bg-cream border-2 border-deepBlue shadow-[3px_3px_0px_#315B8A]">
+                                <h3 class="font-editorial text-3xl font-bold text-deepBlue">${room.room_name}</h3>
+                                <p class="text-xs font-semibold text-ink/75 mt-1 line-clamp-1">"${room.description || 'هنا نذكر معًا 🤍'}"</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-2xl bg-warmYellow/35 border-2 border-deepBlue space-y-1.5">
+                                <div class="flex justify-between items-center text-xs font-extrabold">
+                                    <span class="text-deepBlue">☀️ الصباح</span>
+                                    <span class="text-forestGreen">${morningCount}/${totalMembers}</span>
+                                </div>
+                                <div class="w-full h-2 bg-[#FFFDF9] rounded-full overflow-hidden border border-deepBlue">
+                                    <div class="bg-forestGreen h-full rounded-full" style="width: ${morningPct}%"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-2xl bg-skyBlue/30 border-2 border-deepBlue space-y-1.5">
+                                <div class="flex justify-between items-center text-xs font-extrabold">
+                                    <span class="text-deepBlue">🌙 المساء</span>
+                                    <span class="text-deepBlue">${eveningCount}/${totalMembers}</span>
+                                </div>
+                                <div class="w-full h-2 bg-[#FFFDF9] rounded-full overflow-hidden border border-deepBlue">
+                                    <div class="bg-deepBlue h-full rounded-full" style="width: ${eveningPct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 flex items-center justify-between text-xs font-extrabold text-deepBlue border-t-2 border-dashed border-deepBlue/20">
+                            <span>📖 افتح دفتر المجلس</span>
+                            <span class="px-3 py-1 rounded-full bg-warmYellow border border-deepBlue">ادخل ←</span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            },
+
+            // ==========================================
+            // CREATE & JOIN ROOM LOGIC
+            // ==========================================
+            async handleCreateRoom(e) {
+                e.preventDefault();
+                if (!this.currentUser) return;
+
+                const name = document.getElementById('create-room-name').value.trim();
+                const desc = document.getElementById('create-room-desc').value.trim() || 'هنا نذكر معًا 🤍';
+                const pass = document.getElementById('create-room-pass').value;
+
+                const code = this.generateUniqueRoomCode();
+                const passHash = await this.hashSecret(pass);
+                const newRoom = {
+                    id: 'r-' + Date.now(),
+                    room_code: code,
+                    room_name: name,
+                    description: desc,
+                    password_hash: passHash,
+                    created_by: this.currentUser.id,
+                    created_at: new Date().toISOString()
+                };
+
+                this.store.rooms.push(newRoom);
+                this.store.roomMembers.push({
+                    id: 'rm-' + Date.now(),
+                    room_id: newRoom.id,
+                    user_id: this.currentUser.id,
+                    joined_at: new Date().toISOString()
+                });
+
+                this.lastCreatedRoom = { ...newRoom, plainPassTemporary: pass };
+                this.readyPassVisible = false;
+
+                document.getElementById('create-room-form-card').classList.add('hidden');
+                document.getElementById('create-room-ready-card').classList.remove('hidden');
+                document.getElementById('ready-room-title').textContent = name;
+                document.getElementById('ready-room-code').textContent = code;
+                document.getElementById('ready-room-pass-val').textContent = '••••••';
+                document.getElementById('btn-reveal-ready-pass').textContent = 'إظهار 👁️';
+
+                e.target.reset();
+                this.showToast('مجلسك جاهز 🤍', 'success');
+            },
+
+            toggleReadyPassword() {
+                if (!this.lastCreatedRoom) return;
+                this.readyPassVisible = !this.readyPassVisible;
+                const span = document.getElementById('ready-room-pass-val');
+                const btn = document.getElementById('btn-reveal-ready-pass');
+                if (this.readyPassVisible) {
+                    span.textContent = this.lastCreatedRoom.plainPassTemporary;
+                    btn.textContent = 'إخفاء 🙈';
+                } else {
+                    span.textContent = '••••••';
+                    btn.textContent = 'إظهار 👁️';
+                }
+            },
+
+            copyCreatedRoomInvite() {
+                if (!this.lastCreatedRoom) return;
+                const text = `انضموا إلى مجلسنا "${this.lastCreatedRoom.room_name}" على منصة هنا نذكر 🤍\nرمز المجلس: ${this.lastCreatedRoom.room_code}\nكلمة المرور: ${this.lastCreatedRoom.plainPassTemporary}`;
+                this.copyTextToClipboard(text);
+                this.showToast('تم نسخ بيانات المجلس للدعوة 📋', 'success');
+            },
+
+            async shareCreatedRoomInvite() {
+                if (!this.lastCreatedRoom) return;
+                const text = `انضموا إلى مجلسنا "${this.lastCreatedRoom.room_name}" على منصة هنا نذكر 🤍\nرمز المجلس: ${this.lastCreatedRoom.room_code}\nكلمة المرور: ${this.lastCreatedRoom.plainPassTemporary}`;
+                if (navigator.share) {
+                    try {
+                        await navigator.share({ title: 'هنا نذكر', text });
+                        return;
+                    } catch (_) {}
+                }
+                this.copyTextToClipboard(text);
+                this.showToast('تم نسخ رسالة الدعوة لمشاركتها مع من تحب 🤍', 'success');
+            },
+
+            openCreatedRoomNow() {
+                if (!this.lastCreatedRoom) return;
+                const roomId = this.lastCreatedRoom.id;
+                this.lastCreatedRoom.plainPassTemporary = null; // Clear temporary memory
+                this.openRoom(roomId);
+            },
+
+            async handleJoinRoom(e) {
+                e.preventDefault();
+                if (!this.currentUser) return;
+
+                const now = Date.now();
+                if (this.joinAttempts.lockUntil > now) {
+                    const waitSec = Math.ceil((this.joinAttempts.lockUntil - now) / 1000);
+                    this.showToast(`محاولات كثيرة خاطئة. يرجى الانتظار ${waitSec} ثانية قبل المحاولة مجدداً.`, 'error');
+                    return;
+                }
+
+                const code = document.getElementById('join-room-code').value.trim().toUpperCase();
+                const pass = document.getElementById('join-room-pass').value;
+                const errBox = document.getElementById('join-error-box');
+                errBox.classList.add('hidden');
+
+                const room = this.store.rooms.find(r => r.room_code.toUpperCase() === code);
+                const passHash = await this.hashSecret(pass);
+
+                if (!room || room.password_hash !== passHash) {
+                    this.joinAttempts.count += 1;
+                    if (this.joinAttempts.count >= 5) {
+                        this.joinAttempts.lockUntil = Date.now() + 30000;
+                        this.joinAttempts.count = 0;
+                    }
+                    errBox.textContent = 'رمز المجلس أو كلمة المرور غير صحيحة.';
+                    errBox.classList.remove('hidden');
+                    return;
+                }
+
+                // Reset failed attempts on success
+                this.joinAttempts.count = 0;
+
+                const alreadyMember = this.store.roomMembers.some(
+                    rm => rm.room_id === room.id && rm.user_id === this.currentUser.id
+                );
+                if (!alreadyMember) {
+                    this.store.roomMembers.push({
+                        id: 'rm-' + Date.now(),
+                        room_id: room.id,
+                        user_id: this.currentUser.id,
+                        joined_at: new Date().toISOString()
+                    });
+                }
+
+                e.target.reset();
+                this.showToast(`أهلاً بك في ${room.room_name} 🤍`, 'success');
+                this.openRoom(room.id);
+            },
+
+            // ==========================================
+            // ROOM DASHBOARD & ADHKAR TRACKING
+            // ==========================================
+            openRoom(roomId) {
+                if (!this.currentUser) return;
+                const isMember = this.store.roomMembers.some(
+                    rm => rm.room_id === roomId && rm.user_id === this.currentUser.id
+                );
+                if (!isMember) {
+                    this.showToast('غير مصرح لك بالوصول إلى هذا المجلس إلا بعد الانضمام.', 'error');
+                    return;
+                }
+                this.currentRoomId = roomId;
+                document.getElementById('dhikr-celebration-banner').classList.add('hidden');
+                this.switchRoomTab('sanctuary');
+                this.navigate('room');
+            },
+
+            switchRoomTab(tabName) {
+                const tabs = {
+                    sanctuary: document.getElementById('room-tab-sanctuary'),
+                    activity: document.getElementById('room-tab-activity'),
+                    members: document.getElementById('room-tab-members'),
+                    admin: document.getElementById('room-admin-panel')
+                };
+                const btns = {
+                    sanctuary: document.getElementById('room-tab-btn-sanctuary'),
+                    activity: document.getElementById('room-tab-btn-activity'),
+                    members: document.getElementById('room-tab-btn-members'),
+                    admin: document.getElementById('btn-toggle-admin')
+                };
+
+                Object.keys(tabs).forEach(k => {
+                    if (tabs[k]) tabs[k].classList.add('hidden');
+                    if (btns[k]) {
+                        btns[k].classList.remove('bg-deepBlue', 'text-cream');
+                        btns[k].classList.add('bg-transparent', 'text-ink/80');
+                    }
+                });
+
+                if (tabs[tabName]) tabs[tabName].classList.remove('hidden');
+                if (btns[tabName]) {
+                    btns[tabName].classList.remove('bg-transparent', 'text-ink/80');
+                    btns[tabName].classList.add('bg-deepBlue', 'text-cream');
+                }
+            },
+
+            renderRoomDashboard() {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || !this.currentUser) {
+                    this.navigate('dashboard');
+                    return;
+                }
+
+                const members = this.store.roomMembers.filter(m => m.room_id === room.id);
+                const totalMembers = members.length || 1;
+                const today = this.getTodayDateStr();
+                const todayRecords = this.store.dhikrRecords.filter(r => r.room_id === room.id && r.date === today);
+
+                // Header
+                document.getElementById('room-header-name').textContent = room.room_name;
+                document.getElementById('room-header-desc').textContent = `"${room.description || 'هنا نذكر معًا 🤍'}"`;
+                document.getElementById('room-header-code').textContent = room.room_code;
+                document.getElementById('room-header-members-badge').textContent = `${totalMembers} أعضاء`;
+
+                // Admin Button Visibility
+                const adminBtn = document.getElementById('btn-toggle-admin');
+                if (room.created_by === this.currentUser.id) {
+                    adminBtn.classList.remove('hidden');
+                    document.getElementById('admin-room-name').value = room.room_name;
+                    document.getElementById('admin-room-desc').value = room.description || '';
+                } else {
+                    adminBtn.classList.add('hidden');
+                }
+
+                // Morning Progress
+                const morningRecords = todayRecords.filter(r => r.dhikr_type === 'morning');
+                const morningCount = morningRecords.length;
+                const morningPct = Math.round((morningCount / totalMembers) * 100);
+                document.getElementById('room-morning-stat').textContent = `${morningCount} من ${totalMembers} أعضاء قرأوها اليوم`;
+                document.getElementById('room-morning-bar').style.width = `${morningPct}%`;
+                document.getElementById('room-morning-pct').textContent = `${morningPct}%`;
+
+                const userDoneMorning = morningRecords.some(r => r.user_id === this.currentUser.id);
+                const btnMorning = document.getElementById('btn-complete-morning');
+                const noteMorning = document.getElementById('morning-done-note');
+                if (userDoneMorning) {
+                    btnMorning.textContent = 'تم التسجيل ✓';
+                    btnMorning.disabled = true;
+                    btnMorning.className = 'btn-scrapbook w-full py-4 rounded-2xl bg-sageGreen text-ink font-extrabold text-lg';
+                    noteMorning.classList.remove('hidden');
+                } else {
+                    btnMorning.textContent = 'قرأت أذكار الصباح ✓';
+                    btnMorning.disabled = false;
+                    btnMorning.className = 'btn-scrapbook w-full py-4 rounded-2xl bg-forestGreen text-cream font-extrabold text-lg';
+                    noteMorning.classList.add('hidden');
+                }
+
+                // Evening Progress
+                const eveningRecords = todayRecords.filter(r => r.dhikr_type === 'evening');
+                const eveningCount = eveningRecords.length;
+                const eveningPct = Math.round((eveningCount / totalMembers) * 100);
+                document.getElementById('room-evening-stat').textContent = `${eveningCount} من ${totalMembers} أعضاء قرأوها اليوم`;
+                document.getElementById('room-evening-bar').style.width = `${eveningPct}%`;
+                document.getElementById('room-evening-pct').textContent = `${eveningPct}%`;
+
+                const userDoneEvening = eveningRecords.some(r => r.user_id === this.currentUser.id);
+                const btnEvening = document.getElementById('btn-complete-evening');
+                const noteEvening = document.getElementById('evening-done-note');
+                if (userDoneEvening) {
+                    btnEvening.textContent = 'تم التسجيل ✓';
+                    btnEvening.disabled = true;
+                    btnEvening.className = 'btn-scrapbook w-full py-4 rounded-2xl bg-skyBlue text-ink font-extrabold text-lg';
+                    noteEvening.classList.remove('hidden');
+                } else {
+                    btnEvening.textContent = 'قرأت أذكار المساء ✓';
+                    btnEvening.disabled = false;
+                    btnEvening.className = 'btn-scrapbook w-full py-4 rounded-2xl bg-deepBlue text-cream font-extrabold text-lg';
+                    noteEvening.classList.add('hidden');
+                }
+
+                // Live Activity Feed (آخر من ذكر 🤍 — Pinned Scrapbook Notes)
+                const feedContainer = document.getElementById('room-activity-feed');
+                feedContainer.innerHTML = '';
+                const roomAllRecords = this.store.dhikrRecords
+                    .filter(r => r.room_id === room.id)
+                    .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at))
+                    .slice(0, 12);
+
+                if (roomAllRecords.length === 0) {
+                    feedContainer.innerHTML = `<p class="col-span-full text-sm text-ink/65 text-center py-6">كن أول من يفتتح الذكر ويعلّق أول قصاصة في المجلس اليوم 🤍</p>`;
+                } else {
+                    const noteBgColors = ['bg-warmYellow/45', 'bg-skyBlue/35', 'bg-softPink/45', 'bg-sageGreen/35'];
+                    const noteRotations = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2'];
+                    roomAllRecords.forEach((rec, i) => {
+                        const prof = this.store.profiles.find(p => p.id === rec.user_id);
+                        const name = prof ? prof.display_name : 'عضو';
+                        const isMorning = rec.dhikr_type === 'morning';
+                        const dayLabel = rec.date === today ? 'اليوم' : this.formatArabicDate(rec.date);
+                        const timeLabel = this.formatArabicTime(rec.completed_at);
+
+                        const item = document.createElement('div');
+                        item.className = `pinned-note rounded-2xl p-4 ${noteBgColors[i % noteBgColors.length]} ${noteRotations[i % noteRotations.length]} flex flex-col justify-between gap-3`;
+                        item.innerHTML = `
+                            <div class="pin-dot mx-auto -mt-6"></div>
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="font-editorial text-2xl font-bold text-deepBlue">${name}</span>
+                                <span class="text-xl">${isMorning ? '☀️' : '🌙'}</span>
+                            </div>
+                            <p class="text-xs font-extrabold text-ink">
+                                ${isMorning ? '🌅 قرأ أذكار الصباح' : '🌙 قرأ أذكار المساء'}
+                            </p>
+                            <div class="pt-2 border-t border-deepBlue/20 flex items-center justify-between text-[11px] font-bold text-deepBlue">
+                                <span>${dayLabel}</span>
+                                <span dir="ltr">${timeLabel}</span>
+                            </div>
+                        `;
+                        feedContainer.appendChild(item);
+                    });
+                }
+
+                // Room Members List (أعضاء المجلس — Botanical Medallions, never exposing emails)
+                const membersContainer = document.getElementById('room-members-list');
+                membersContainer.innerHTML = '';
+                const isRoomAdmin = room.created_by === this.currentUser.id;
+
+                members.forEach(m => {
+                    const prof = this.store.profiles.find(p => p.id === m.user_id);
+                    if (!prof) return;
+                    const hasMorning = morningRecords.some(r => r.user_id === prof.id);
+                    const hasEvening = eveningRecords.some(r => r.user_id === prof.id);
+                    const initial = prof.display_name.charAt(0);
+
+                    const row = document.createElement('div');
+                    row.className = 'paper-card rounded-2xl p-4 bg-cream/60 flex flex-col justify-between gap-4';
+                    row.innerHTML = `
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="wax-seal w-12 h-12 bg-warmYellow flex items-center justify-center font-editorial font-bold text-xl text-deepBlue">
+                                    ${initial}
+                                </div>
+                                <div>
+                                    <span class="font-editorial text-2xl font-bold text-deepBlue block leading-none">${prof.display_name}</span>
+                                    ${room.created_by === prof.id ? '<span class="inline-block mt-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-sageGreen/60 border border-forestGreen text-forestGreen">مؤسس المجلس</span>' : '<span class="text-[11px] font-bold text-ink/60">عضو في المجلس</span>'}
+                                </div>
+                            </div>
+                            ${isRoomAdmin && prof.id !== this.currentUser.id ? `
+                                <button onclick="app.handleAdminRemoveMember('${prof.id}')" title="إزالة العضو" class="px-2.5 py-1 rounded-lg bg-softPink border border-ink text-xs font-extrabold">✕</button>
+                            ` : ''}
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-dashed border-deepBlue/20">
+                            <div class="px-3 py-1.5 rounded-xl text-xs font-extrabold border text-center ${hasMorning ? 'bg-warmYellow border-deepBlue text-ink' : 'bg-[#FFFDF9] border-deepBlue/25 text-ink/40'}">
+                                🌅 الصباح ${hasMorning ? '✓' : '—'}
+                            </div>
+                            <div class="px-3 py-1.5 rounded-xl text-xs font-extrabold border text-center ${hasEvening ? 'bg-skyBlue/60 border-deepBlue text-ink' : 'bg-[#FFFDF9] border-deepBlue/25 text-ink/40'}">
+                                🌙 المساء ${hasEvening ? '✓' : '—'}
+                            </div>
+                        </div>
+                    `;
+                    membersContainer.appendChild(row);
+                });
+            },
+
+            recordDhikr(type) {
+                if (!this.currentUser || !this.currentRoomId) return;
+
+                // Verify room membership
+                const isMember = this.store.roomMembers.some(
+                    rm => rm.room_id === this.currentRoomId && rm.user_id === this.currentUser.id
+                );
+                if (!isMember) {
+                    this.showToast('يجب أن تكون عضواً في المجلس لتسجيل الذكر.', 'error');
+                    return;
+                }
+
+                const today = this.getTodayDateStr();
+
+                // Enforce unique constraint: room_id + user_id + dhikr_type + date
+                const duplicate = this.store.dhikrRecords.some(
+                    r => r.room_id === this.currentRoomId &&
+                         r.user_id === this.currentUser.id &&
+                         r.dhikr_type === type &&
+                         r.date === today
+                );
+
+                if (duplicate) {
+                    this.showToast('تم تسجيل هذا الذكر اليوم بالفعل. تقبّل الله 🤍');
+                    return;
+                }
+
+                this.store.dhikrRecords.push({
+                    id: 'dr-' + Date.now(),
+                    room_id: this.currentRoomId,
+                    user_id: this.currentUser.id,
+                    dhikr_type: type,
+                    date: today,
+                    completed_at: new Date().toISOString()
+                });
+
+                const banner = document.getElementById('dhikr-celebration-banner');
+                banner.classList.remove('hidden');
+                this.spawnCelebrationParticles(type);
+                this.showToast('تم التسجيل ✓ تقبّل الله 🤍', 'success');
+                this.renderRoomDashboard();
+            },
+
+            spawnCelebrationParticles(type) {
+                const emojis = type === 'morning'
+                    ? ['☀️', '🤍', '🌿', '✨', '🦋', '🌻']
+                    : ['🌙', '🤍', '✨', '⭐', '🌿', '🦋'];
+                for (let i = 0; i < 14; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'celebration-particle die-cut-sticker w-10 h-10 rounded-full text-lg';
+                    el.textContent = emojis[i % emojis.length];
+                    el.style.left = `${15 + Math.random() * 70}vw`;
+                    el.style.top = `${40 + Math.random() * 35}vh`;
+                    el.style.animationDelay = `${Math.random() * 0.4}s`;
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 1800);
+                }
+            },
+
+            triggerStickerBurst(theme, btnEl) {
+                if (btnEl) {
+                    btnEl.style.transform = 'scale(1.3) rotate(14deg)';
+                    setTimeout(() => { btnEl.style.transform = ''; }, 320);
+                }
+                const sets = {
+                    sun: ['☀️', '🌻', '✨', '💛'],
+                    moon: ['🌙', '⭐', '✨', '🌌'],
+                    butterfly: ['🦋', '🌸', '✨', '🤍'],
+                    leaf: ['🌿', '🌱', '🍃', '🤍'],
+                    heart: ['🤍', '✨', '🦋', '🌿']
+                };
+                const chosen = sets[theme] || sets.heart;
+                for (let i = 0; i < 10; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'celebration-particle die-cut-sticker w-9 h-9 rounded-2xl text-base';
+                    el.textContent = chosen[i % chosen.length];
+                    el.style.left = `${18 + Math.random() * 64}vw`;
+                    el.style.top = `${55 + Math.random() * 25}vh`;
+                    el.style.animationDelay = `${Math.random() * 0.25}s`;
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 1700);
+                }
+            },
+
+            copyCurrentRoomCode() {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room) return;
+                this.copyTextToClipboard(room.room_code);
+                this.showToast(`تم نسخ رمز المجلس (${room.room_code}) 📋`, 'success');
+            },
+
+            openRoomHistory() {
+                this.navigate('history');
+                const select = document.getElementById('history-room-select');
+                if (this.currentRoomId && select) {
+                    select.value = this.currentRoomId;
+                    this.renderHistoryView();
+                }
+            },
+
+            // ==========================================
+            // ADHKAR READER MODAL
+            // ==========================================
+            toggleReaderModal(type) {
+                const modal = document.getElementById('adhkar-reader-modal');
+                const title = document.getElementById('reader-modal-title');
+                const body = document.getElementById('reader-modal-body');
+                const btn = document.getElementById('reader-modal-complete-btn');
+
+                title.textContent = type === 'morning' ? '☀️ أذكار الصباح' : '🌙 أذكار المساء';
+                body.innerHTML = ADHKAR_CONTENT[type].map((item, idx) => `
+                    <div class="p-4 rounded-2xl bg-[#FFFDF9] border-2 border-deepBlue/30 shadow-sm">
+                        <span class="inline-block w-6 h-6 rounded-full bg-warmYellow border border-deepBlue text-center text-xs font-bold leading-5 ml-2">${idx + 1}</span>
+                        <span>${item}</span>
+                    </div>
+                `).join('');
+
+                btn.onclick = () => {
+                    this.closeReaderModal();
+                    this.recordDhikr(type);
+                };
+
+                modal.classList.remove('hidden');
+            },
+
+            closeReaderModal() {
+                document.getElementById('adhkar-reader-modal').classList.add('hidden');
+            },
+
+            // ==========================================
+            // ROOM ADMIN OPERATIONS (Authorized for Creator)
+            // ==========================================
+            toggleAdminPanel() {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || !this.currentUser || room.created_by !== this.currentUser.id) {
+                    this.showToast('غير مصرح لك بإدارة هذا المجلس.', 'error');
+                    return;
+                }
+                this.switchRoomTab('admin');
+            },
+
+            handleAdminUpdateInfo(e) {
+                e.preventDefault();
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || room.created_by !== this.currentUser?.id) return;
+
+                room.room_name = document.getElementById('admin-room-name').value.trim();
+                room.description = document.getElementById('admin-room-desc').value.trim();
+                this.renderRoomDashboard();
+                this.showToast('تم تحديث بيانات المجلس بنجاح ✓', 'success');
+            },
+
+            async handleAdminUpdatePassword(e) {
+                e.preventDefault();
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || room.created_by !== this.currentUser?.id) return;
+
+                const newPass = document.getElementById('admin-new-pass').value;
+                room.password_hash = await this.hashSecret(newPass);
+                e.target.reset();
+                this.showToast('تم تحديث وتشفير كلمة مرور المجلس الجديدة 🔒', 'success');
+            },
+
+            handleAdminRegenerateCode() {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || room.created_by !== this.currentUser?.id) return;
+
+                room.room_code = this.generateUniqueRoomCode();
+                this.renderRoomDashboard();
+                this.showToast(`تم توليد رمز جديد للمجلس: ${room.room_code}`, 'success');
+            },
+
+            handleAdminRemoveMember(userId) {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || room.created_by !== this.currentUser?.id || userId === this.currentUser.id) return;
+
+                this.store.roomMembers = this.store.roomMembers.filter(
+                    rm => !(rm.room_id === room.id && rm.user_id === userId)
+                );
+                this.renderRoomDashboard();
+                this.showToast('تم إزالة العضو من المجلس.');
+            },
+
+            handleAdminDeleteRoom() {
+                const room = this.store.rooms.find(r => r.id === this.currentRoomId);
+                if (!room || room.created_by !== this.currentUser?.id) return;
+
+                this.store.rooms = this.store.rooms.filter(r => r.id !== room.id);
+                this.store.roomMembers = this.store.roomMembers.filter(rm => rm.room_id !== room.id);
+                this.store.dhikrRecords = this.store.dhikrRecords.filter(dr => dr.room_id !== room.id);
+                this.currentRoomId = null;
+                this.showToast('تم حذف المجلس نهائياً.');
+                this.navigate('dashboard');
+            },
+
+            // ==========================================
+            // HISTORY VIEW (السجل)
+            // ==========================================
+            renderHistoryView() {
+                if (!this.currentUser) return;
+                const rooms = this.getUserJoinedRooms();
+                const select = document.getElementById('history-room-select');
+
+                const currentVal = select.value || this.currentRoomId || (rooms[0] && rooms[0].id);
+                select.innerHTML = rooms.map(r => `<option value="${r.id}">${r.room_name} (${r.room_code})</option>`).join('');
+                if (currentVal && rooms.some(r => r.id === currentVal)) {
+                    select.value = currentVal;
+                }
+
+                const activeRoomId = select.value;
+                const daysGrid = document.getElementById('history-days-grid');
+                daysGrid.innerHTML = '';
+
+                if (!activeRoomId) {
+                    daysGrid.innerHTML = `<p class="text-sm text-ink/70">انضم إلى مجلس لعرض السجل اليومي.</p>`;
+                    return;
+                }
+
+                // Collect last 6 days including today
+                const dates = [];
+                for (let i = 0; i < 6; i++) {
+                    dates.push(this.getPastDateStr(i));
+                }
+
+                if (!this.selectedHistoryDate || !dates.includes(this.selectedHistoryDate)) {
+                    this.selectedHistoryDate = dates[0];
+                }
+
+                dates.forEach(dateStr => {
+                    const recs = this.store.dhikrRecords.filter(r => r.room_id === activeRoomId && r.date === dateStr);
+                    const mCount = recs.filter(r => r.dhikr_type === 'morning').length;
+                    const eCount = recs.filter(r => r.dhikr_type === 'evening').length;
+                    const isSelected = this.selectedHistoryDate === dateStr;
+
+                    const card = document.createElement('div');
+                    card.className = `paper-card rounded-2xl p-5 cursor-pointer transition-all ${isSelected ? 'bg-warmYellow/50 ring-2 ring-deepBlue' : 'bg-[#FFFDF9]'}`;
+                    card.onclick = () => {
+                        this.selectedHistoryDate = dateStr;
+                        this.renderHistoryView();
+                    };
+
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between border-b border-deepBlue/20 pb-2 mb-3">
+                            <span class="font-editorial text-xl font-bold text-deepBlue">${this.formatArabicDate(dateStr)}</span>
+                            ${dateStr === this.getTodayDateStr() ? '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-sageGreen/50 text-forestGreen">اليوم</span>' : ''}
+                        </div>
+                        <div class="space-y-1.5 text-sm font-bold">
+                            <p class="text-forestGreen">🌅 الصباح: ${mCount} أعضاء</p>
+                            <p class="text-deepBlue">🌙 المساء: ${eCount} أعضاء</p>
+                        </div>
+                    `;
+                    daysGrid.appendChild(card);
+                });
+
+                this.renderHistoryDateDetail(activeRoomId, this.selectedHistoryDate);
+            },
+
+            renderHistoryDateDetail(roomId, dateStr) {
+                document.getElementById('history-detail-date').textContent = this.formatArabicDate(dateStr);
+                const list = document.getElementById('history-detail-list');
+                list.innerHTML = '';
+
+                const recs = this.store.dhikrRecords
+                    .filter(r => r.room_id === roomId && r.date === dateStr)
+                    .sort((a, b) => new Date(a.completed_at) - new Date(b.completed_at));
+
+                if (recs.length === 0) {
+                    list.innerHTML = `<p class="text-sm text-ink/65 py-6 text-center">لا توجد سجلات مسجلة في هذا اليوم.</p>`;
+                    return;
+                }
+
+                recs.forEach(rec => {
+                    const prof = this.store.profiles.find(p => p.id === rec.user_id);
+                    const name = prof ? prof.display_name : 'عضو';
+                    const isMorning = rec.dhikr_type === 'morning';
+
+                    const item = document.createElement('div');
+                    item.className = 'p-3.5 rounded-2xl bg-[#FFFDF9] border-2 border-deepBlue/40 flex items-center justify-between';
+                    item.innerHTML = `
+                        <div>
+                            <p class="font-extrabold text-sm text-deepBlue">${name}</p>
+                            <p class="text-xs font-bold ${isMorning ? 'text-forestGreen' : 'text-deepBlue'}">
+                                ${isMorning ? '🌅 أذكار الصباح' : '🌙 أذكار المساء'}
+                            </p>
+                        </div>
+                        <span class="font-mono text-xs font-bold bg-cream px-2.5 py-1 rounded-xl border border-deepBlue/30">
+                            ${this.formatArabicTime(rec.completed_at)}
+                        </span>
+                    `;
+                    list.appendChild(item);
+                });
+            },
+
+            // ==========================================
+            // PERSONAL PROFILE VIEW (ذكري اليومي)
+            // ==========================================
+            renderProfileView() {
+                if (!this.currentUser) return;
+                document.getElementById('profile-display-name').textContent = this.currentUser.display_name;
+                document.getElementById('profile-avatar').textContent = this.currentUser.display_name.charAt(0);
+
+                const myRecords = this.store.dhikrRecords
+                    .filter(r => r.user_id === this.currentUser.id)
+                    .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
+
+                const morningTotal = myRecords.filter(r => r.dhikr_type === 'morning').length;
+                const eveningTotal = myRecords.filter(r => r.dhikr_type === 'evening').length;
+                const uniqueDays = new Set(myRecords.map(r => r.date)).size;
+
+                document.getElementById('profile-morning-total').textContent = morningTotal;
+                document.getElementById('profile-evening-total').textContent = eveningTotal;
+                document.getElementById('profile-days-total').textContent = uniqueDays;
+
+                if (myRecords.length > 0) {
+                    const latest = myRecords[0];
+                    document.getElementById('profile-last-date').textContent = this.formatArabicDate(latest.date);
+                    document.getElementById('profile-last-time').textContent = this.formatArabicTime(latest.completed_at);
+                } else {
+                    document.getElementById('profile-last-date').textContent = 'لم يُسجّل بعد';
+                    document.getElementById('profile-last-time').textContent = '—';
+                }
+            },
+
+            // ==========================================
+            // SUPABASE CONNECTION & CLIPBOARD HELPERS
+            // ==========================================
+            openSupabaseModal() {
+                document.getElementById('supabase-modal').classList.remove('hidden');
+            },
+
+            closeSupabaseModal() {
+                document.getElementById('supabase-modal').classList.add('hidden');
+            },
+
+            saveSupabaseConfig(e) {
+                e.preventDefault();
+                const url = document.getElementById('sb-url-input').value.trim();
+                const key = document.getElementById('sb-key-input').value.trim();
+                if (!url || !key) return;
+
+                try {
+                    this.supabase = window.supabase.createClient(url, key);
+                    this.isCloudSupabase = true;
+                    document.getElementById('db-status-label').textContent = 'Supabase Cloud';
+                    this.closeSupabaseModal();
+                    this.showToast('تم الاتصال بمشروع Supabase بنجاح! ✓', 'success');
+                } catch (err) {
+                    this.showToast('تعذر الاتصال، تأكد من صحة الرابط والمفتاح العام.', 'error');
+                }
+            },
+
+            disconnectSupabaseConfig() {
+                this.supabase = null;
+                this.isCloudSupabase = false;
+                document.getElementById('db-status-label').textContent = 'متصل';
+                this.closeSupabaseModal();
+                this.showToast('تم التبديل إلى قاعدة البيانات التفاعلية المدمجة.');
+            },
+
+            copySqlSchema() {
+                const sql = document.getElementById('sql-schema-box').textContent;
+                this.copyTextToClipboard(sql);
+                this.showToast('تم نسخ كود SQL بنجاح 📋', 'success');
+            },
+
+            copyTextToClipboard(text) {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try {
+                    document.execCommand('copy');
+                } catch (_) {}
+                document.body.removeChild(ta);
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    </script>
+</body>
+</html>
